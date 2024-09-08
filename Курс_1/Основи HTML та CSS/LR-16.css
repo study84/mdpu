@@ -1,0 +1,65 @@
+body {    
+    --margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    padding: 10px;    
+    font-size: 12px;
+    text-align: justify;
+    background-color: #050d3b;    
+    color: #6575d1;    
+}
+
+
+.reg {    
+    margin-bottom: 25px;    
+    --justify-content: center;
+    text-align: center;
+}
+
+
+.title {    
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+label {
+    font-size: 16px;
+    --text-align: left;
+}
+
+
+.reg > form p {
+    font-size: 15px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+input[type=text], [type=tel], [type=email], [type=password] {
+    font-size: 15px;    
+    text-align: center;
+    padding: 3px;    
+    border: 1px solid #6575d1;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: white;
+    background: #081666;
+}
+
+input[type=text]:hover, [type=tel]:hover, [type=email]:hover, [type=password]:hover {    
+    padding: 3px 5px;    
+    border: 1px solid #97a3e9;
+    border-radius: 5px;
+    color: white;
+    background: #081666;
+}
+
+
+input[type=submit] {
+    font-size: 20px;
+    padding: 5px 15px;
+    border: 1px solid #97a3e9;
+    border-radius: 5px;
+    background: #788dff;
+}

@@ -1,0 +1,102 @@
+body {
+    background-color: #050d3b;
+    color: #6575d1;
+    text-align: justify;
+    font-size: 12px;    
+}
+
+.cell {    
+    margin: 5px;
+    border: 1px solid #9d9f0b;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-areas:
+        "hd hd hd hd hd hd hd hd hd hd hd hd"
+        "lb lb cb cb cb cb cb cb cb cb rb rb"
+        "ft ft ft ft ft ft ft ft ft ft ft ft"
+    ;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #9d9f0b;
+}
+
+.head {
+    grid-area: hd;
+    padding: 5px;
+}
+
+.lb {
+    grid-area: lb;
+    padding: 5px;
+}
+
+.cb {
+    grid-area: cb;
+    padding: 5px;
+}
+
+.rb {
+    grid-area: rb;
+    padding: 5px;
+}
+
+.ft {
+    grid-area: ft;
+    padding: 5px;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-areas:
+            "hd hd hd hd hd hd hd hd"
+            "lb lb cb cb cb cb rb rb"
+            "ft ft ft ft ft ft ft ft"
+        ;        
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid #9d9f0b;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+            "hd hd hd hd"
+            "lb cb cb cb"
+            "rb rb rb rb"
+            "ft ft ft ft"
+        ;        
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid #9d9f0b;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas:
+            "hd"
+            "lb"
+            "cb"
+            "rb"
+            "ft"
+        ;        
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid #9d9f0b;
+    }
+}

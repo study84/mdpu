@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Лабораторна робота 18-19, 823-і, Золотухін Андрій Олександрович</title>    
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" type="image/x-icon" href=".\icon\favicon\cube-1.png">
+	<link rel="stylesheet" href="LR-18-19.css">
+</head>
+
+
+<body>
+
+<ul class="menu-head">
+    <li><a href=".\LR-18-19.html">Головна</a></li>
+    <li><a href="#">Товари</a>
+        <ul class="menu-sub">
+            <li><a href="#">Електроніка</a></li>
+            <li><a href="#">Інструменти</a></li>
+            <li><a href="#">Харчування</a></li>
+            <li><a href="#">Одяг</a></li>
+            <li><a href="#">Побутова хімія</a></li>
+        </ul>
+    </li>
+    <li><a href="#">Послуги</a></li>
+    <li><a href="#">Акції</a></li>            
+    <li><a href="#">Мої замовлення</a></li>
+    <li><a href="#">Доставка</a></li>
+    <li><a href="#">Про нас</a>
+        <ul class="menu-sub">
+            <li><a href=".\LR-18-19 about.html">Про компанію</a></li>
+            <li><a href="#">Відгуки</a></li>
+            <li><a href=".\LR-18-19 contact.html">Контакти</a></li>
+        </ul>
+    </li>        
+</ul> 
+
+<br>
+
+<div class="contact">
+    <div class="title">Контакти</div>
+    <address>Україна, місто Запоріжжя, проспект Возз'єднання, 1</address>
+    <p><a href="mailto:info@example.com">Надіслати лист</a></p>
+    <p><a href="tel:+38061123456789">+38 (612) 123-456-789</a></p>
+
+    
+    <div class="title">Зворотній зв'язок</div>
+    <form action="/reguser.php" method="post" target="_blank">
+        <div class="person-contact">
+            <div>
+                <label for="fname">Як до вас можна звертатися <span class="dontskip">*</span></label><br>
+                <input type="text" id="fname" name="fname" autofocus placeholder="Введіть ім'я" required>
+            </div>        
+            
+            <div>
+                <label for="tel">Номер телефону <span class="dontskip">*</span></label><br>
+                <input type="tel" id="tel" name="tel" placeholder="+380-987654321" pattern="[0-9]{3}-[0-9]{9}" required>
+            </div>                
+    
+            <div>
+                <label for="email">Електронна пошта <span class="dontskip">*</span></label><br>
+                <input type="email" id="email" name="email" placeholder="example@server.com" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
+            </div>        
+        </div>
+        <div>
+            <label for="multiline-input">Поставте ваше запитання,<br>ми обов'язково відповімо вам найближчим часом</label><br>
+            <textarea class="multiline-input" name="multiline-input" placeholder="Напишіть ваше запитання"></textarea>
+        </div>
+        <input type="submit" value="Надіслати повідомлення">
+    </form>
+</div>
+
+
+
+
+
+
+
+
+    
+    
+
+</body>
+
+<footer>
+
+</footer>
+
+</html>

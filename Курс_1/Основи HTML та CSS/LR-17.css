@@ -1,0 +1,122 @@
+body {    
+    --margin: 0;
+    padding: 10px;    
+    font-size: 12px;
+    text-align: justify;
+    background-color: #050d3b;    
+    color: #6575d1;    
+}
+
+
+.main {    
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+    margin-bottom: 25px;    
+    --justify-content: center;
+    text-align: center;
+}
+
+
+.title {    
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+
+.person-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 20px;
+    --grid-gap: 15px;    
+}
+
+
+label {
+    font-size: 16px;
+    --text-align: left;
+}
+
+
+.dontskip {
+    color: rgb(170, 57, 57);
+}
+
+
+.multiline-input {
+    padding-top: 45px;
+    width: 430px;
+    height: 150px;
+    padding: 10px;
+    resize: none;
+    border: 1px solid #97a3e9;
+    border-radius: 5px;
+    background: #081666;
+    color: white;
+}
+
+.menu-radio {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    width: 430px;
+    border: 1px solid #97a3e9;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.menu-radio > legend {
+    font-size: 15px;
+}
+
+
+.menu-radio  label {
+    margin-bottom: 120px;
+}
+
+
+
+.address {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 20px;
+}
+
+
+.address select {    
+    padding: 1px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+
+
+input[type=text], [type=tel], [type=email] {
+    font-size: 15px;    
+    text-align: center;
+    padding: 3px;    
+    border: 1px solid #6575d1;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: white;
+    background: #081666;
+}
+
+input[type=text]:hover, [type=tel]:hover, [type=email]:hover{    
+    padding: 3px 5px;    
+    border: 1px solid #97a3e9;
+    border-radius: 5px;
+    color: white;
+    background: #081666;
+}
+
+
+input[type=submit] {
+    font-size: 20px;
+    padding: 5px 15px;
+    border: 1px solid #97a3e9;
+    border-radius: 5px;
+    background: #788dff;
+}

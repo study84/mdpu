@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Лабораторна робота 16, 823-і, Золотухін Андрій Олександрович</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" type="image/x-icon" href=".\icon\favicon\cube-1.png">
+	<link rel="stylesheet" type="text/css" href="./LR-16.css"/>
+</head>
+
+
+<body>
+    <div class="reg">
+        <div class="title">Реєстрація</div>
+        <form action="/reguser.php" method="post" target="_blank">
+            <label for="fname">Ім'я:</label><br>
+            <input type="text" id="fname" name="fname" autofocus required><br>
+
+            <label for="Sname">Прізвище:</label><br>
+            <input type="text" id="lname" name="Sname" required><br>
+
+            <label for="tel">Номер телефону</label><br>
+            <input type="tel" id="tel" name="tel" placeholder="+380-987654321" pattern="[0-9]{3}-[0-9]{9}" required><br>
+
+            <label for="email">Електронна пошта</label><br>
+            <input type="email" id="email" name="email" placeholder="example@server.com" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required><br>
+
+            <label for="password">Вкажіть пароль</label><br>
+            <input type="password" id="password" name="password" maxlength="10" required><br>
+
+            <p>Реєструючись, ви погоджуєтеся з умовами <a href="#">положення про збір і захист персональних даних</a></p>
+            
+            <input type="submit" value="Зареєструватися"><br>
+
+            <p><a href="#">Я вже зареєстрований</a></p>
+
+
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Лабораторна робота 17, 823-і, Золотухін Андрій Олександрович</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" type="image/x-icon" href=".\icon\favicon\cube-1.png">
+	<link rel="stylesheet" type="text/css" href="./LR-17.css"/>
+</head>
+
+
+<body>
+    <div class="main">
+        <div class="title">Ваша контактна інформація</div>
+        <form action="/reguser.php" method="post" target="_blank">
+            <div class="person-contact">
+                <div>
+                    <label for="fname">Ім'я <span class="dontskip">*</span></label><br>
+                    <input type="text" id="fname" name="fname" autofocus placeholder="Введіть ім'я" required>
+                </div>
+                
+                <div>
+                    <label for="Sname">Прізвище <span class="dontskip">*</span></label><br>
+                    <input type="text" id="lname" name="Sname" placeholder="Введіть прізвище" required>
+                </div>
+                
+                <div>
+                    <label for="tel">Номер телефону <span class="dontskip">*</span></label><br>
+                    <input type="tel" id="tel" name="tel" placeholder="+380-987654321" pattern="[0-9]{3}-[0-9]{9}" required>
+                </div>                
+
+                <div>
+                    <label for="email">Електронна пошта <span class="dontskip">*</span></label><br>
+                    <input type="email" id="email" name="email" placeholder="example@server.com" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
+                </div>
+                
+            </div>           
+
+
+            <fieldset class="menu-radio">
+                <legend>Способи оплати <span class="dontskip">*</span></legend>                
+                <input type="radio" id="pay-option1" name="pay-options" value="option1" checked>
+                <label for="pay-option1">Банківською картою</label><br>                
+                <input type="radio" id="pay-option2" name="pay-options" value="option2">
+                <label for="pay-option2">Готівкою при отриманні</label><br>                
+            </fieldset>
+
+
+            <fieldset class="menu-radio">
+                <legend>Спосіб отримання <span class="dontskip">*</span></legend>                
+                <input type="radio" id="delivery-option1" name="options" value="option1" checked>
+                <label for="delivery-option1">Кур'єром</label><br>                
+                <input type="radio" id="delivery-option2" name="options" value="option2">
+                <label for="delivery-option2">Службою доставки</label><br>                
+                <input type="radio" id="delivery-option3" name="options" value="option3">
+                <label for="delivery-option3">Самовивіз</label><br>                
+            </fieldset>
+
+            <fieldset class="menu-radio address">
+                <legend>Адреса доставки <span class="dontskip">*</span></legend>              
+
+                
+                <div>
+                    <label for="Region">Виберіть область:</label><br>
+                    <select id="regions" name="region">
+                        <option value="zaporizhzhia">Запорізька</option>
+                        <option value="kiev">Київська</option>
+                        <option value="odesa">Одеська</option>
+                        <option value="kharkiv">Харківська</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="Citys">Виберіть місто:</label><br>
+                    <select id="Citys" name="city">
+                        <option value="zaporizhzhia">Запоріжжя</option>
+                        <option value="kiev">Київ</option>
+                        <option value="odesa">Одеса</option>
+                        <option value="kharkiv">Харків</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="Points">Відділення</label><br>
+                    <select id="Points" name="Point">
+                        <option value="zaporizhzhia">1 - проспект Соборний</option>
+                        <option value="kiev">2 - Набережна</option>
+                        <option value="odesa">3 - Заводська</option>
+                    </select>
+                </div>
+
+            </fieldset>
+
+            <div>
+                <label for="multiline-input">Примітки до замовлення</label><br>
+                <textarea class="multiline-input" name="multiline-input" placeholder="Прикметки до замовлення (не обов'язково)"></textarea>
+            </div>
+
+            <input type="submit" value="ОФОРМИТИ ЗАМОВЛЕННЯ">
+
+        </form>
+    </div>
+
+</body>
+
+</html>
