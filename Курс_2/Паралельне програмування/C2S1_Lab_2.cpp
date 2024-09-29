@@ -10,11 +10,8 @@
 #include <string>
 
 
-
 using namespace std;
 
-
-//auto rnd = [](int max) {};
 
 void print_martrix(const string name, const vector<vector<int>>& matrix);
 
