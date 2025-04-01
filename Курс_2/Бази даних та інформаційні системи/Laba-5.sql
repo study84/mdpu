@@ -10,7 +10,7 @@ SELECT * from Suppliers LIMIT 10;
 ------------------------------------------------------
 
 -- 8. Вибрати тільки назви та міста проектів та постачальників, такі що проект та постачальник знаходяться в одному місті.
-SELECT j.JNAME, j.CITY, supp.CITY 
+SELECT * /*j.JNAME, j.CITY, supp.CITY*/
 FROM SPJ s
 INNER JOIN Suppliers supp USING(SNUM)
 INNER JOIN Parts p USING(PNUM)
@@ -20,9 +20,11 @@ WHERE p.CITY = supp.CITY
 
 -- 11. Вибрати всі можливі комбінації міста постачальника та міста деталі без повторень (постачання не потрібно).
 SELECT DISTINCT p.CITY AS "City Parts", supp.CITY AS "City Suppliers"
-FROM SPJ s
+FROM Suppliers supp, Parts p
+/*SPJ s
 INNER JOIN Suppliers supp USING(SNUM)
 INNER JOIN Parts p USING(PNUM)
+*/
 
 
 -- 23. Вибрати всю інформацію про всі поставки постачальника зі статусом >20.
@@ -49,9 +51,4 @@ INNER JOIN Suppliers supp USING(SNUM)
 INNER JOIN Parts p USING(PNUM)
 INNER JOIN Jobs j USING(JNUM)
 WHERE supp.CITY = 'Paris' OR p.COLOR = 'Red'
-
-
-
-
-
 
