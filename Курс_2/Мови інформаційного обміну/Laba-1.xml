@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="Laba-1.css"?>
+<FILE_1>
+  <STUDENT>
+    <FAMILY>Іванов</FAMILY>
+    <NAME>Сергій</NAME>
+    <YEAR>1993</YEAR>
+    <GROUP>ІФ 87</GROUP>
+  </STUDENT>
+  <STUDENT>
+    <FAMILY>Петрова</FAMILY>
+    <NAME>Галина</NAME>
+    <YEAR>1992</YEAR>
+    <GROUP>ІФ 87</GROUP>
+  </STUDENT>
+  <STUDENT>
+    <FAMILY>Семенов</FAMILY>
+    <NAME>Валерій</NAME>
+    <YEAR>1993</YEAR>
+    <GROUP>ІФ 88</GROUP>
+  </STUDENT>
+  <STUDENT>
+    <FAMILY>Павлова</FAMILY>
+    <NAME>Ірина</NAME>
+    <YEAR>1994</YEAR>
+    <GROUP>ІФ 89</GROUP>
+  </STUDENT>
+</FILE_1>

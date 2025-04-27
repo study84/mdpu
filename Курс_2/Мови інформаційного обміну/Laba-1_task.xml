@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="Laba-1_task_style.css"?>
+<movies>
+  <movie>
+    <original_title>Dark City</original_title>
+    <ukrainian_title>Темне місто</ukrainian_title>
+    <year>1998</year>
+    <country>США, Австралія</country>
+    <production_company>New Line Cinema, Mystery Clock Cinema</production_company>
+    <director>Алекс Прояс</director>
+    <budget>27 000 000 $</budget>
+    <box_office>14 384 331 $</box_office>
+  </movie>
+  <movie>
+    <original_title>The Thirteenth Floor</original_title>
+    <ukrainian_title>Тринадцятий поверх</ukrainian_title>
+    <year>1999</year>
+    <country>США, Німеччина</country>
+    <production_company>Columbia Pictures, Centropolis Film Productions</production_company>
+    <director>Йозеф Руснак</director>
+    <budget>12 000 000 $</budget>
+    <box_office>18 527 865 $</box_office>
+  </movie>
+  <movie>
+    <original_title>eXistenZ</original_title>
+    <ukrainian_title>Екзистенція</ukrainian_title>
+    <year>1999</year>
+    <country>Канада, Велика Британія</country>
+    <production_company>Alliance Atlantis Communications, Film4 Productions</production_company>
+    <director>Девід Кроненберг</director>
+    <budget>31 000 000 $</budget>
+    <box_office>3 632 610 $</box_office>
+  </movie>
+  <movie>
+    <original_title>Equilibrium</original_title>
+    <ukrainian_title>Еквілібріум</ukrainian_title>
+    <year>2002</year>
+    <country>США</country>
+    <production_company>Miramax Films</production_company>
+    <director>Курт Віммер</director>
+    <budget>20 000 000 $</budget>
+    <box_office>5 383 539 $</box_office>
+  </movie>
+  <movie>
+    <original_title>Source Code</original_title>
+    <ukrainian_title>Вихідний код</ukrainian_title>
+    <year>2011</year>
+    <country>США, Канада, Франція</country>
+    <production_company>Vendome Pictures, Summit Entertainment, Mark Gordon Company</production_company>
+    <director>Дункан Джонс</director>
+    <budget>32 000 000 $</budget>
+    <box_office>147 341 708 $</box_office>
+  </movie>
+</movies>

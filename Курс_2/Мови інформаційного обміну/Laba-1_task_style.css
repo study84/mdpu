@@ -1,0 +1,83 @@
+/* Загальні стилі для всього документа (якщо XML відображається як HTML) */
+body {
+  font-family: sans-serif;
+  background-color: #f8f8f8;
+  color: #333;
+  margin: 20px;
+}
+
+/* Стиль для контейнера всіх фільмів */
+movies {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Адаптивна сітка */
+  gap: 20px;
+}
+
+/* Стиль для кожного окремого фільму */
+movie {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Стиль для заголовка фільму (українська назва) */
+movie > ukrainian_title {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Стиль для оригінальної назви */
+movie > original_title {
+  display: block;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+/* Стиль для року виходу */
+movie > year {
+  display: block;
+  color: #999;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Стиль для інформаційних рядків (країна, компанія, режисер тощо) */
+movie > * { /* Застосовує стиль до всіх прямих дочірніх елементів movie */
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Стиль для міток (назва поля) */
+movie > *:before {
+  content: attr(tag) ": "; /* Виводить назву тега як мітку */
+  font-weight: bold;
+  color: #555;
+}
+
+/* Стиль для бюджету та зборів */
+movie > budget,
+movie > box_office {
+  color: green;
+}
+
+/* Псевдоелемент для візуального розділення фільмів */
+movie::after {
+  content: '';
+  display: block;
+  border-bottom: 1px dashed #eee;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Видаляємо останній роздільник */
+movie:last-child::after {
+  display: none;
+}
