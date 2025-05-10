@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog>
+    <book id="bk101">
+        <title>1984</title>
+        <author>George Orwell</author>
+        <genre>Dystopian</genre>
+        <price>19.84</price>
+        <publish_date>1949-06-08</publish_date>
+    </book>
+    <book id="bk102">
+        <title>Brave New World</title>
+        <author>Aldous Huxley</author>
+        <genre>Science Fiction</genre>
+        <price>15.99</price>
+        <publish_date>1932-01-01</publish_date>
+    </book>
+    <book id="bk103">
+        <title>Fahrenheit 451</title>
+        <author>Ray Bradbury</author>
+        <genre>Dystopian</genre>
+        <price>12.99</price>
+        <publish_date>1953-10-19</publish_date>
+    </book>
+    <book id="bk104">
+        <title>To Kill a Mockingbird</title>
+        <author>Harper Lee</author>
+        <genre>Classic</genre>
+        <price>10.99</price>
+        <publish_date>1960-07-11</publish_date>
+    </book>
+    <book id="bk105">
+        <title>The Great Gatsby</title>
+        <author>F. Scott Fitzgerald</author>
+        <genre>Classic</genre>
+        <price>14.50</price>
+        <publish_date>1925-04-10</publish_date>
+    </book>
+    <book id="bk106">
+        <title>Catch-22</title>
+        <author>Joseph Heller</author>
+        <genre>Satire</genre>
+        <price>18.00</price>
+        <publish_date>1961-11-10</publish_date>
+    </book>
+    <book id="bk107">
+        <title>Slaughterhouse-Five</title>
+        <author>Kurt Vonnegut</author>
+        <genre>Anti-war</genre>
+        <price>13.75</price>
+        <publish_date>1969-03-31</publish_date>
+    </book>
+    <book id="bk108">
+        <title>Lord of the Flies</title>
+        <author>William Golding</author>
+        <genre>Allegory</genre>
+        <price>9.99</price>
+        <publish_date>1954-09-17</publish_date>
+    </book>
+    <book id="bk109">
+        <title>Animal Farm</title>
+        <author>George Orwell</author>
+        <genre>Political satire</genre>
+        <price>11.20</price>
+        <publish_date>1945-08-17</publish_date>
+    </book>
+    <book id="bk110">
+        <title>Frankenstein</title>
+        <author>Mary Shelley</author>
+        <genre>Gothic</genre>
+        <price>7.80</price>
+        <publish_date>1818-01-01</publish_date>
+    </book>
+</catalog>
