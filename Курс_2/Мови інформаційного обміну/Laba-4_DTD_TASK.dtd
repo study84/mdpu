@@ -1,0 +1,38 @@
+<!- 513-і, Золотухін Андрій, Лаба № 4, DTD, ЗАВДАННЯ -->
+
+
+<!-- Кореневий елемент, який містить один або більше фільмів -->
+<!ELEMENT movies (movie+)>
+
+<!-- Елемент movie містить піделементи у вказаному порядку -->
+<!ELEMENT movie (
+    original_title,
+    ukrainian_title,
+    year,
+    country,
+    production_company,
+    director,
+    budget,
+    box_office
+)>
+
+<!-- Атрибути до елемента movie:
+     id        — обов’язковий унікальний ідентифікатор (тип ID — текстовий, але має бути унікальним)
+     rating    — необов’язковий рейтинг (тип CDATA — тобто текст, може містити число або інше)
+     language  — обов’язкова мова фільму (тип CDATA — текстовий)
+>
+<!ATTLIST movie
+    id        ID        #REQUIRED      <!-- Унікальний ідентифікатор (обов’язковий) -->
+    rating    CDATA     #IMPLIED       <!-- Рейтинг фільму (необов’язковий) -->
+    language  CDATA     #REQUIRED      <!-- Мова фільму (обов’язковий) -->
+>
+
+<!-- Піделементи фільму з текстовим вмістом -->
+<!ELEMENT original_title (#PCDATA)>         <!-- Оригінальна назва -->
+<!ELEMENT ukrainian_title (#PCDATA)>        <!-- Назва українською -->
+<!ELEMENT year (#PCDATA)>                   <!-- Рік випуску -->
+<!ELEMENT country (#PCDATA)>                <!-- Країна-виробник -->
+<!ELEMENT production_company (#PCDATA)>     <!-- Кіностудія -->
+<!ELEMENT director (#PCDATA)>               <!-- Режисер -->
+<!ELEMENT budget (#PCDATA)>                 <!-- Бюджет -->
+<!ELEMENT box_office (#PCDATA)>             <!-- Касові збори -->

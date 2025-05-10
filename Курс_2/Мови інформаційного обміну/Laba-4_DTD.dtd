@@ -1,0 +1,19 @@
+<!- 513-і, Золотухін Андрій, Лаба № 4, DTD -->
+<!-- Laba-4_DTD.dtd -->
+
+<!ELEMENT FILE_1 (Student+)>
+<!ELEMENT Student (Family, Name, Group, Year?, Phone*)>
+<!ATTLIST Student
+	Num ID #REQUIRED
+>
+
+
+<!ELEMENT Family (#PCDATA)>
+<!ELEMENT Name (#PCDATA)>
+<!ELEMENT Group (#PCDATA)>
+<!ELEMENT Year (#PCDATA)>
+
+<!ELEMENT Phone (#PCDATA)>
+<!ATTLIST Phone
+    PhoneType (L|M) #REQUIRED
+>

@@ -1,0 +1,40 @@
+<!- 513-і, Золотухін Андрій, Лаба № 4 -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE FILE_1 SYSTEM "Laba-4_DTD.dtd">
+
+<FILE_1>
+	<Student Num="1">
+        <Family>Иванов</Family>
+        <Name>Сергей</Name>
+        <Group>ИФ 87</Group>
+        <Year>1993</Year>
+        <Phone PhoneType="L">1111111</Phone>
+        <Phone PhoneType="M">067-1111111</Phone>
+    </Student>
+	
+	<Student Num="2">
+        <Family>Петрова</Family>
+        <Name>Галина</Name>
+        <Group>ИФ 87</Group>
+        <Year>1992</Year>        
+    </Student>
+	
+	<Student Num="3">
+        <Family>Семенов</Family>
+        <Name>Валерий</Name>
+        <Group>ИФ 88</Group>        
+        <Phone PhoneType="L">3333333</Phone>
+        <Phone PhoneType="M">095-3333333</Phone>
+        <Phone PhoneType="M">067-3333333</Phone>
+    </Student>
+	
+	<Student Num="4">
+        <Family>Павлова</Family>
+        <Name>Ирина</Name>
+        <Group>ИФ 89</Group>        
+        <Phone PhoneType="L">4444444</Phone>
+        <Phone PhoneType="M">095-4444444</Phone>
+		<Year>1994</Year>
+    </Student>
+</FILE_1>
