@@ -1,0 +1,54 @@
+{
+  "movies": [
+    {
+      "original_title": "Dark City",
+      "ukrainian_title": "Темне місто",
+      "year": 1998,
+      "country": "США, Австралія",
+      "production_company": "New Line Cinema, Mystery Clock Cinema",
+      "director": "Алекс Прояс",
+      "budget": "27 000 000 $",
+      "box_office": "14 384 331 $"
+    },
+    {
+      "original_title": "The Thirteenth Floor",
+      "ukrainian_title": "Тринадцятий поверх",
+      "year": 1999,
+      "country": "США, Німеччина",
+      "production_company": "Columbia Pictures, Centropolis Film Productions",
+      "director": "Йозеф Руснак",
+      "budget": "12 000 000 $",
+      "box_office": "18 527 865 $"
+    },
+    {
+      "original_title": "eXistenZ",
+      "ukrainian_title": "Екзистенція",
+      "year": 1999,
+      "country": "Канада, Велика Британія",
+      "production_company": "Alliance Atlantis Communications, Film4 Productions",
+      "director": "Девід Кроненберг",
+      "budget": "31 000 000 $",
+      "box_office": "3 632 610 $"
+    },
+    {
+      "original_title": "Equilibrium",
+      "ukrainian_title": "Еквілібріум",
+      "year": 2002,
+      "country": "США",
+      "production_company": "Miramax Films",
+      "director": "Курт Віммер",
+      "budget": "20 000 000 $",
+      "box_office": "5 383 539 $"
+    },
+    {
+      "original_title": "Source Code",
+      "ukrainian_title": "Вихідний код",
+      "year": 2011,
+      "country": "США, Канада, Франція",
+      "production_company": "Vendome Pictures, Summit Entertainment, Mark Gordon Company",
+      "director": "Дункан Джонс",
+      "budget": "32 000 000 $",
+      "box_office": "147 341 708 $"
+    }
+  ]
+}
