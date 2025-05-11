@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Database>
+  <Actors>
+    <Actor>
+      <actor_id>1</actor_id>
+      <First_name>Robert</First_name>
+      <Last_name>Downey</Last_name>
+      <Gender>true</Gender>
+      <Birth_date>1965-04-04</Birth_date>
+    </Actor>
+  </Actors>
+
+  <Directors>
+    <Director>
+      <director_id>1</director_id>
+      <First_name>Christopher</First_name>
+      <Last_name>Nolan</Last_name>
+      <Gender>true</Gender>
+      <Birth_date>1970-07-30</Birth_date>
+    </Director>
+  </Directors>
+
+  <Studios>
+    <Studio>
+      <studio_id>1</studio_id>
+      <studio_name>Warner Bros</studio_name>
+      <address>4000 Warner Blvd</address>
+      <phone_number>+1-818-954-3000</phone_number>
+    </Studio>
+  </Studios>
+
+  <Ratings>
+    <Rating>
+      <rating_id>1</rating_id>
+      <rating_name>PG-13</rating_name>
+    </Rating>
+  </Ratings>
+
+  <Movies>
+    <Movie>
+      <movie_id>1</movie_id>
+      <title>Inception</title>
+      <release_year>2010</release_year>
+      <runtime>PT2H28M</runtime>
+      <rating_id>1</rating_id>
+      <studio_id>1</studio_id>
+      <director_id>1</director_id>
+    </Movie>
+    <Movie>
+      <movie_id>2</movie_id>
+      <title>The Dark Knight</title>
+      <release_year>2008</release_year>
+      <runtime>PT2H32M</runtime>
+      <rating_id>1</rating_id>
+      <studio_id>1</studio_id>
+      <director_id>1</director_id>
+    </Movie>
+    <Movie>
+      <movie_id>3</movie_id>
+      <title>Interstellar</title>
+      <release_year>2014</release_year>
+      <runtime>PT2H49M</runtime>
+      <rating_id>1</rating_id>
+      <studio_id>1</studio_id>
+      <director_id>1</director_id>
+    </Movie>
+    <Movie>
+      <movie_id>4</movie_id>
+      <title>Dunkirk</title>
+      <release_year>2017</release_year>
+      <runtime>PT1H46M</runtime>
+      <rating_id>1</rating_id>
+      <studio_id>1</studio_id>
+      <director_id>1</director_id>
+    </Movie>
+    <Movie>
+      <movie_id>5</movie_id>
+      <title>Tenet</title>
+      <release_year>2020</release_year>
+      <runtime>PT2H30M</runtime>
+      <rating_id>1</rating_id>
+      <studio_id>1</studio_id>
+      <director_id>1</director_id>
+    </Movie>
+  </Movies>
+</Database>
