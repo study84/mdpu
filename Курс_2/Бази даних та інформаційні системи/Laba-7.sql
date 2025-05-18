@@ -37,5 +37,11 @@ INNER JOIN Parts USING(PNUM);
 -- 50. Отримати всі міста, в яких розташований принаймні один постачальник, одна деталь або проект
 SELECT DISTINCT j.CITY FROM Jobs j
 WHERE j.CITY IN (SELECT p.CITY FROM Parts p) AND j.CITY IN (SELECT s.CITY FROM Suppliers s)
+---
+SELECT DISTINCT j.CITY
+FROM Jobs j
+INNER JOIN Parts p USING(CITY)
+INNER JOIN Suppliers s USING(CITY)
+
 
 
