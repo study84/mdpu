@@ -1,0 +1,3 @@
+actor_id,First_name,Last_name,Gender,Birth_date
+1,Tom,Cruise,true,1962-07-03
+2,Emma,Watson,false,1990-04-15

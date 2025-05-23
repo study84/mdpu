@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <!-- Кореневий елемент -->
+  <xs:element name="MovieDatabase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Actors" minOccurs="0"/>
+        <xs:element ref="Directors" minOccurs="0"/>
+        <xs:element ref="Studios" minOccurs="0"/>
+        <xs:element ref="Ratings" minOccurs="0"/>
+        <xs:element ref="Movies" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Actors -->
+  <xs:element name="Actors">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Actor" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="actor_id" type="xs:integer"/>
+              <xs:element name="First_name" type="xs:string"/>
+              <xs:element name="Last_name" type="xs:string"/>
+              <xs:element name="Gender" type="xs:boolean"/>
+              <xs:element name="Birth_date" type="xs:date"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Directors -->
+  <xs:element name="Directors">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Director" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="director_id" type="xs:integer"/>
+              <xs:element name="First_name" type="xs:string"/>
+              <xs:element name="Last_name" type="xs:string"/>
+              <xs:element name="Gender" type="xs:boolean"/>
+              <xs:element name="Birth_date" type="xs:date"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Studios -->
+  <xs:element name="Studios">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Studio" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="studio_id" type="xs:integer"/>
+              <xs:element name="studio_name" type="xs:string"/>
+              <xs:element name="address" type="xs:string"/>
+              <xs:element name="phone_number" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Ratings -->
+  <xs:element name="Ratings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Rating" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="rating_id" type="xs:integer"/>
+              <xs:element name="rating_name" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Movies -->
+  <xs:element name="Movies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Movie" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="movie_id" type="xs:integer"/>
+              <xs:element name="title" type="xs:string"/>
+              <xs:element name="release_year" type="xs:gYear"/>
+              <xs:element name="runtime" type="xs:duration"/>
+              <xs:element name="rating_id" type="xs:integer" minOccurs="0"/>
+              <xs:element name="studio_id" type="xs:integer" minOccurs="0"/>
+              <xs:element name="director_id" type="xs:integer" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
