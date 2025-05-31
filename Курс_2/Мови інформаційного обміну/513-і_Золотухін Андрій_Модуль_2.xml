@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<operator name="Kyivstar" country="Україна" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="mobile_operator.xsd">
+    <tariffs>
+        <tariff id="t1">
+            <name>Безлім 2025</name>
+            <price>150.00</price>
+            <currency>UAH</currency>
+            <internet>20</internet>
+            <minutes>500</minutes>
+            <sms>50</sms>
+            <activationDate>2025-01-01</activationDate>
+        </tariff>
+        <tariff id="t2">
+            <name>Максимум</name>
+            <price>300.50</price>
+            <currency>UAH</currency>
+            <internet>50</internet>
+            <minutes>1500</minutes>
+            <sms>100</sms>
+            <activationDate>2025-03-10</activationDate>
+        </tariff>
+        <tariff id="t3">
+            <name>Економ</name>
+            <price>100.00</price>
+            <currency>UAH</currency>
+            <internet>10</internet>
+            <minutes>200</minutes>
+            <sms>20</sms>
+            <activationDate>2025-02-01</activationDate>
+        </tariff>
+        <tariff id="t4">
+            <name>Сімейний</name>
+            <price>250.00</price>
+            <currency>UAH</currency>
+            <internet>30</internet>
+            <minutes>1000</minutes>
+            <sms>80</sms>
+            <activationDate>2025-01-15</activationDate>
+        </tariff>
+        <tariff id="t5">
+            <name>Бізнес</name>
+            <price>400.00</price>
+            <currency>UAH</currency>
+            <internet>100</internet>
+            <minutes>5000</minutes>
+            <sms>500</sms>
+            <activationDate>2025-04-01</activationDate>
+        </tariff>
+    </tariffs>
+
+    <subscribers>
+        <subscriber id="s1" active="true">
+            <name>Олександр Петров</name>
+            <phone>+380501112233</phone>
+            <tariffRef>t1</tariffRef>
+            <joined>2024-12-15</joined>
+        </subscriber>
+        <subscriber id="s2" active="false">
+            <name>Марина Коваленко</name>
+            <phone>+380631234567</phone>
+            <tariffRef>t2</tariffRef>
+            <joined>2023-06-25</joined>
+        </subscriber>
+        <subscriber id="s3" active="true">
+            <name>Дмитро Іванов</name>
+            <phone>+380671234567</phone>
+            <tariffRef>t3</tariffRef>
+            <joined>2025-01-20</joined>
+        </subscriber>
+        <subscriber id="s4" active="true">
+            <name>Олена Сергієнко</name>
+            <phone>+380931234555</phone>
+            <tariffRef>t4</tariffRef>
+            <joined>2024-11-10</joined>
+        </subscriber>
+        <subscriber id="s5" active="false">
+            <name>Ігор Мельник</name>
+            <phone>+380501112244</phone>
+            <tariffRef>t5</tariffRef>
+            <joined>2023-03-22</joined>
+        </subscriber>
+        <subscriber id="s6" active="true">
+            <name>Тетяна Романюк</name>
+            <phone>+380671000111</phone>
+            <tariffRef>t1</tariffRef>
+            <joined>2025-02-05</joined>
+        </subscriber>
+        <subscriber id="s7" active="true">
+            <name>Андрій Козак</name>
+            <phone>+380931234111</phone>
+            <tariffRef>t2</tariffRef>
+            <joined>2025-02-28</joined>
+        </subscriber>
+        <subscriber id="s8" active="false">
+            <name>Людмила Верещук</name>
+            <phone>+380991234789</phone>
+            <tariffRef>t3</tariffRef>
+            <joined>2022-08-15</joined>
+        </subscriber>
+        <subscriber id="s9" active="true">
+            <name>Юрій Шевченко</name>
+            <phone>+380671112233</phone>
+            <tariffRef>t4</tariffRef>
+            <joined>2024-10-05</joined>
+        </subscriber>
+        <subscriber id="s10" active="true">
+            <name>Наталія Дяченко</name>
+            <phone>+380951234999</phone>
+            <tariffRef>t5</tariffRef>
+            <joined>2025-03-01</joined>
+        </subscriber>
+    </subscribers>
+
+    <services>
+        <service id="srv1">
+            <name>Роумінг</name>
+            <description>Міжнародний роумінг</description>
+            <enabled>true</enabled>
+        </service>
+        <service id="srv2">
+            <name>Мобільний інтернет</name>
+            <description>Швидкий 4G</description>
+            <enabled>true</enabled>
+        </service>
+        <service id="srv3">
+            <name>Музика без обмежень</name>
+            <description>Слухайте музику без трафіку</description>
+            <enabled>false</enabled>
+        </service>
+    </services>
+</operator>
