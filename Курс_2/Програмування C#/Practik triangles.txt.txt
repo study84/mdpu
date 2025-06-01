@@ -1,0 +1,3 @@
+Equilateral,6
+Isosceles,5,45
+Right,3,4
