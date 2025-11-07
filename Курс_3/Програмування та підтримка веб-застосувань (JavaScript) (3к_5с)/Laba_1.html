@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>513-і, Золотухін Андрій</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
+</head>
+
+<body>
+    <h1>Програмування та підтримка веб-застосувань (JavaScript) (3к_5с)<br>Лабораторна робота 1. Використання форм та математичних функцій.<br>513-і, Золотухін Андрій</h1>	
+	<hr>
+	
+	<script>
+	"use strict"
+		/* Включает строгий режим (strict mode) в JavaScript. Делает код более «строгим» и безопасным: Запрещает использовать несуществующие переменные;
+		Не даёт переопределять зарезервированные слова; Помогает находить ошибки раньше. Рекомендуется всегда писать "use strict"; в начале скрипта.*/			
+		//const stop = new Decimal(0.5 * Math.pow(10,-3));
+		const stop = 0.5 * Math.pow(10, -3);
+		
+		function factorial(n) {			
+			if (n < 0) return undefined; // факториал отрицательных чисел не определён
+			else if (n === 0 || n === 1) return 1;
+			return n * factorial(n - 1);
+		}
+		//console.log(factorial(4)); // 120
+		
+		function formula (x) {
+			let n = 0, sum = 0, p1, p2, p3, f;
+			do {
+				p1 = Math.pow(-1, n);
+				p2 = Math.pow(x, 2 * n);
+				p3 = factorial(2 * n);
+				f = p1 * (p2 / p3);
+				sum += f;
+				console.log(`${new Date().toLocaleString('ru-RU')}\tN = ${n}\tMod = ${Math.abs(f)}\tSum = ${sum}`);
+				n++;				
+			} while (Math.abs(f) >= stop);
+			return (n, sum);
+		}
+
+		
+	</script>
+
+	<details>
+		<summary><b>Рівень 1. Обчислити одне значення суми ряду, де аргументом буде число, введене через форму.</b></summary>
+		<form id="task1">
+			<input type="number" id="userInput1" placeholder="Введіть значення X" step="1" required>
+			<button type="submit">Виконати розрахунок</button>
+			<span id="result1" style="margin-left: 10px;"></span>
+		</form>
+		
+		<script>
+		"use strict"
+			const form1 = document.getElementById('task1');
+			form1.addEventListener('submit', function(event) {
+				event.preventDefault(); // предотвращаем перезагрузку страницы				
+				const x = document.getElementById('userInput1').value; // получаем значение поля				
+				//alert(`X = ${x} / ${typeof x}, Точність = ${stop}, Формула = ${formula(x)}`);
+				//document.write(formula(x));
+				const resultDisplay = document.getElementById('result1');
+				resultDisplay.textContent = `Результат ${formula(x)}`;
+			});
+		</script>
+	</details>
+	<br>
+	
+	<details>
+		<summary><b>Рівень 2. Обчислити набір значень суми ряду, де аргумент буде змінюватись у вибраному Вами проміжку та з вибраним кроком. Значень щонайменше 10.
+		<br>
+		Рівень 3. Виконати завдання рівня 2 але вивести всі значення у вигляді таблиці. Додатково порахувати певний інтеграл заданої функції заданому інтервалі.
+		</b></summary>
+		<form id="task2">
+			<input type="number" id="userInput21" placeholder="Введіть значення X" required>
+			<input type="number" id="userInput22" placeholder="Крок збільшення STEP" required>
+			<input type="number" id="userInput23" placeholder="Кількість розрахунків COUNT" required min = 10>
+			<button type="submit">Виконати розрахунок</button>
+			<br>
+			<table border="1" cellspacing="0" cellpadding="5">
+				<caption>Результати обчислень</caption>
+				<thead>
+					<tr>
+						<th>№</th>
+						<th>Аргумент X</th>
+						<th>Результат</th>
+					</tr>
+				</thead>
+				<tbody id="result2">
+				</tbody>
+			</table>			
+		</form>
+		
+		<script>
+			"use strict"
+			const form2 = document.getElementById('task2');
+			form2.addEventListener('submit', function(event) {
+				event.preventDefault(); // предотвращаем перезагрузку страницы
+
+				const x = parseInt(document.getElementById('userInput21').value, 10);
+				const STEP = parseInt(document.getElementById('userInput22').value, 10);
+				const COUNT = parseInt(document.getElementById('userInput23').value, 10);				
+				const resultDisplay = document.getElementById('result2');
+				let result = "";
+				for (let r = 0; r < COUNT; r++) {
+					const currentX = x + STEP * r;
+					result += `<tr><td>${r + 1}</td><td>${currentX.toFixed(2)}</td><td>${formula(currentX)}</td></tr>`;
+				}				
+				resultDisplay.innerHTML = result;				
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+
+    <!--
+    <script>	
+		alert("alert - Показывает пользователю всплывающее модальное окно с текстом.");
+        document.write("document.write - Пишет текст прямо в HTML-документ (в тело страницы).");		
+        console.log(`${new Date().toLocaleString('ru-RU')} console.log - Выводит сообщение в консоль разработчика (DevTools → вкладка Console).`);		
+		document.write("<br>var — функциональная область видимости<br>let — блочная область видимости");    
+		document.write("<br>");
+		
+		// let const A = 1;
+		let A = 1;
+		let B = 2;
+		document.write(`<br>${A + B}<br>`);
+		A = B * 10;	
+	</script>
+	-->
+	
+	
+</body>
+</html>
