@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>513-і, Золотухін Андрій</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
+</head>
+
+<body>
+    <h1>Програмування та підтримка веб-застосувань (JavaScript) (3к_5с)<br>ЛЕКЦИИ<br>513-і, Золотухін Андрій</h1>	
+	<hr>
+	
+	<details>
+		<summary><b>Лекция 1</b></summary>
+		<pre>
+		"use strict" - Включает строгий режим (strict mode) в JavaScript. Делает код более «строгим» и безопасным: Запрещает использовать несуществующие переменные; Не даёт переопределять зарезервированные слова; Помогает находить ошибки раньше. Рекомендуется всегда писать "use strict"; в начале скрипта.
+		
+		var a;
+		var b = 2;
+		let c;
+		let d = " any text " ;
+		f = 10.5; // не працює в use strict
+		var COLOR_RED = "#F00"; // Приймаємо за константу
+		COLOR_GREEN = "#0F0"; // Приймаємо за константу
+		const myBirthday = '18.04.1982'; // Дійсно константа (тільки нові браузери)
+		
+		Число "number"
+		Рядок «string»
+		Булевий (логічний) тип "boolean"
+		Спеціальне значення "null"
+		Спеціальне значення "undefined"
+		Усі об'єктні типи (посилання) « object »
+		Функція (посилання на функцію)
+		
+		Оператор typeof - Визначити тип змінної (возвращает в виде строки)
+		typeof undefined // "undefined"
+		typeof 0 // "number"
+		typeof true // "boolean"
+		typeof "foo" // "string"
+		typeof {} // "object"
+		typeof null // "object"
+		typeof function(){} //"function"
+		
+		let n = 123;
+		n = 12.345;
+		var a = Number.NaN; Глобальное свойство NaN является значением, представляющим не-число (Not-A-Number).
+		let b = Number.NEGATIVE_INFINITY;
+		let c = Number.POSITIVE_INFINITY;
+		Number.isNaN(x)
+		Number.isFinite(x)
+		Number.isInteger(x)
+		Number.isSafeInteger(x)
+		Number.parseFloat() // є глобальна
+		Number.parseInt() // є глобальна
+		---
+		let bigInt = 1234567890123456734567890n;
+		
+		
+		Спеціальне значення null не відноситься до жодного з типів
+		Спеціальне значення undefined також стоїть окремо
+		
+		
+		let a = 123;
+		let b=a.toString(); // У будь-якому типі є такий метод
+		let b1=a.toString(16); // Вказати систему числення
+		let c=String(a); // Ясне перетворення (конструктор типу)
+		let d=""+a; //операція конкатинації з рядком
+		--
+		let numberVal=Number("853"); //Явне приведення
+		let numberVal2=+"321"; // Через трюк
+		let intVal=Number.parseInt("543"); // Приведення до цілого
+		let floatVal=Number.parseFloat("5.65"); // приведення суворо до речового
+
+		Діалоги
+		result = <b>prompt(title, [default]);</b> // Цей код відображає модальне вікно з текстом, полем для введення тексту та кнопками OK/Скасувати. Користувач може надрукувати щось у полі введення та натиснути OK. Він також може скасувати введення натисканням кнопки «Скасувати» або натиснувши клавішу Esc. Виклик prompt поверне текст, вказаний у полі для введення, або null, якщо введення скасовано користувачем.
+		result = <b>confirm(question);</b> //Функція confirm відображає модальне вікно з текстом питання question та двома кнопками: OK та Скасувати.
+		
+		МАССИВЫ / ARRAY
+		let arr = новий Array();
+		let arr = новий Array(2); // Чи створимо масив довжиною 2
+		let arr = new Array(" Яблуко", "Груша", "і тд");
+		let arr = [];
+		let fruits = [" Яблуко", "Апельсин", "Слива"];
+		let any=[1,”2”, false, undefinit];
+		--
+		length - размер массива. автоматично оновлюється при зміні масиву. length – його можна перезаписати. Якщо ми вручну збільшимо його, нічого цікавого не станеться. Проте, якщо ми зменшимо його, масив стане коротшим. Цей процес необоротний
+		---
+		push( X) додає елемент до кінця.
+		pop() видаляє останній елемент.
+		shift() видаляє елемент на початку, зрушуючи чергу, так що другий елемент стає першим. 
+		unshift(X) додає елемент до кінця.		
+		
+		Перебір елементів
+		for (let i = 0; i < arr.length; i++) - звичайний цикл for
+		for (let fruit <b>of</b> fruits) - проходить за значеннями
+		for (let index <b>in</b> fruits) - проходить за індексами
+		
+		
+		Операції порівняння
+		// Типи наводяться автоматично
+		let h = 5 <4; // false
+		let g=5<"6";// true
+
+		// Небезпека наведення типів
+		let l=(""==0); // true
+		let z=("1"==true); // true
+
+		//Правильні варіанти
+		let l=(""===0); // false
+		let z=("1"!==true); // true
+
+
+
+
+		
+		
+		</pre>
+	</details>
+	<br>
+	
+	
+</body>
+</html>

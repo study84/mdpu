@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>513-і, Золотухін Андрій</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
+</head>
+
+<body>
+    <h1>Програмування та підтримка веб-застосувань (JavaScript) (3к_5с)<br>Лабораторна робота 2. Обробка рядків.<br>Варіант 8.<br>513-і, Золотухін Андрій</h1>
+	<hr>
+	
+	<ol>Завдання для виконання. Написати скрипт для виконання завдання відповідно до вимог:
+		<li>Забезпечити <u>введення вихідних</u> даних через метод <u>prompt(...)</u>.</li>
+		<li>Забезпечити <u>виведення результатів</u> виконання програми через методи <u>alert(...)</u> або <u>confirm(...)</u>.</li>
+		<li><u>Виведення великої кількості даних</u> здійснювати за допомогою <u>document.write(...)</u> у вигляді списку або таблиці (у випадку необхідності).</li>
+		<li>Програмний код для виконання завдання оформити як <u>функцію</u>. Вихідні дані передавати через параметри, а результат повертати як результат функції (через return). Основний скрипт забезпечує введення даних, виклик функції і відображення відповіді.</li>
+	</ol>
+	
+	<script>
+		"use strict"
+		function task1(text, size) {
+			if (text.length > size) return text.substring(0, size);
+			else if (text.length < size) return text + '+'.repeat(size - text.length);
+			else return text;
+		}
+		
+		function task2(text) {
+			text = text.trim();			
+			if (text.length > 0) {
+				do {
+					text = text.replace("  ", " ");
+				} while (text.includes("  "));
+				let s33_1 = text.indexOf("!");
+				if (s33_1 >= 0) {
+					let s33_2 = text.indexOf("!", s33_1 + 1);
+					if (s33_2 >= 0) {
+						text = text.substring(s33_1 + 1, s33_2 - 1);
+						let text_split = text.trim().split(" ");
+						//console.log(`Text '${text}' >>> Split '${text_split}' > Len = ${text_split.length}`);
+						return text_split.length;
+					}						
+					else return "Помилка! Другого символ '!' не виявлено."
+				}
+				else return "Помилка! Символ '!' не виявлено."
+			}
+			else return "Помилка! Порожній рядок.";
+		}
+		
+		
+		function task3(text) { // -+5453+213-213+21-21+23-++3-123+3---321+213+- = -5661
+			if (text.length > 0) {
+				do {
+					text = text.replace("++", "+");
+					text = text.replace("+-", "+");
+					text = text.replace("--", "-");
+					text = text.replace("-+", "-");
+					text = text.replace(" ", "");
+				} while (["++", "--", "+-", "-+", " "].some(c => text.includes(c))); // text.includes(" ")
+				if ((text.at(-1) === "+") || (text.at(-1) === "-")) text = text.slice(0, -1);
+				
+				/*
+				for(let i = 0; i < text.length;) {
+					plus = text.indexOf("+", i);
+					minus = text.indexOf("-", i);
+					if (minus === 0) {
+						plus = text.indexOf("+", i + 1);
+						minus = text.indexOf("-", i + 1);						
+					}
+					console.log(i, result);
+					break;
+					i = text.indexOf("-", i) + 1;				
+					if (text.includes("-", i) === 0) {						
+					}				
+				}
+				*/
+				
+				//console.log(`Text: '${text}'`, `\t'0 + "5453"': ${parseInt(0 + "5453", 10)} >> `, 0 + text.split("-"));				
+				//console.log((0 + text).split("-"), (0 + text).split("+"));
+				
+				let array = (0 + text).split("-");
+				console.log(array, typeof(array));				
+				//console.log(array, array.at(1), !isNaN(array.at(1)));
+				
+				// text.split("-").map(Number);
+				
+				let result = 0;
+				for (let arr of array) {
+					if (!isNaN(arr)) {						
+						result += -Number.parseInt(arr);
+					}
+					else {						
+						//console.log(a.split("+").map(Number));
+						let arr1 = arr.split("+").map(Number);						
+						arr1[0] *= -1;
+						//console.log(arr1);
+						for (let a of arr1)
+							//console.log(a);
+							result += a;
+					}						
+				}
+				//console.log(result);				
+				return result;				
+			}
+			else return null;
+		}
+	</script>
+	
+	
+	<details>
+		<summary><b>Перший рівень складності.</b></summary>		
+		<form id="task1">			
+			<button type="submit">Написати функцію, яка одержує рядок і ціле число, а повертає рядок довжина якого дорівнює числу. Якщо довжина рядка менше числа, то додати символи “+“. Якщо більше, то видалити зайві.</button>				
+		</form>
+		
+		<script>		
+			const form1 = document.getElementById('task1');
+			form1.addEventListener('submit', function(event) {
+				event.preventDefault();
+				let text = prompt("Введіть текст для обробки функцією");
+				let size = parseInt(prompt("Введіть розмір рядка"));
+				let result = task1(text, size);
+				console.log('Task 1', text, size, result);
+				alert(`TASK 1: Text = '${text}' Size = ${size} Result = '${task1(text, size)}'`);
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>Другий рівень складності.</b></summary>		
+		<form id="task2">			
+			<button type="submit">Визначити кількість слів у рядку, розташованих між двома знаками оклику(!).</button>
+		</form>
+		
+		<script>		
+			const form2 = document.getElementById('task2');
+			form2.addEventListener('submit', function(event) {
+				event.preventDefault();
+				let text = prompt("Введіть текст для обробки функцією пошуку / розділення");
+				alert(`TASK 2: Text= '${text}' >> Count = ` + task2(text));
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>Третій рівень складності.</b></summary>		
+		<form id="task3">			
+			<button type="submit">Дано рядок, що зображує арифметичний вираз виду <цифра>±<цифра>±…±<цифра>, де на місці знаку «±» знаходиться символ «+» або «-« (наприклад, 4+5-8). Обчислити значення цього виразу..</button>
+		</form>
+		
+		<script>		
+			const form3 = document.getElementById('task3');
+			form3.addEventListener('submit', function(event) {
+				event.preventDefault();
+				let text = prompt("Введіть текст для обробки функцією пошуку / розділення");
+				alert(`TASK 3: Результат розрахунку = ${task3(text)}`);
+				//alert(`Text: '${text}' SubStr(!) >> Count = ` + task2(text));
+			});
+		</script>
+	</details>
+	<br>
+	
+		
+	
+</body>
+</html>
