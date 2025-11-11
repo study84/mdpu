@@ -101,7 +101,28 @@
 							result += a;
 					}						
 				}
-				//console.log(result);				
+				//console.log(result);
+				
+				// version 2
+				let array2 = (0 + text);
+				console.log(`Пр: ${array2}`);
+				let z = true;
+				let num2 = "";
+				let result2 = 0;
+				
+				for(let arr of array2) {
+					if (arr === "+" || arr === "-") {						
+						result2 += parseInt(num2, 10) * (z ? 1 : -1);
+						z = arr === "+";
+						console.log(`z=${z}\t${num2}\t${result2}`);
+						num2 = "";
+					}
+					else num2 += arr;
+				}
+				result2 += parseInt(num2, 10) * (z ? 1 : -1);				
+				console.log(`result2 = ${result2}`);
+				// ------------------------------------------
+				
 				return result;				
 			}
 			else return null;
