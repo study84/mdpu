@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>513-і, Золотухін Андрій</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
+</head>
+
+<body>
+    <h1>Програмування та підтримка веб-застосувань (JavaScript) (3к_5с)<br>Лабораторна робота 3. Циклічні алгоритми та обробка масивів.<br>Варіант 8.<br>513-і, Золотухін Андрій</h1>
+	<hr>
+	
+	<ol>Написати скрипт, який виконує завдання згідно з вашим варіантом. Вихідні дані вводяться залежно від рівня:
+		<li>перший рівень – розміри вводяться через <u>prompt (…)</u>, а значення масиву виходять <u>випадковим чином у довільному діапазоні</u>.</li>
+		<li>другий рівень – розміри вводяться через <u>форму</u>, а значення масиву виходять <u>випадковим чином у довільному діапазоні</u>.</li>
+		<li>третій рівень – розміри вводяться через <u>форму</u>, а значення масиву виходять <u>випадковим чином у діапазоні, заданому через [min, max], де min та max вводиться через туж форму, що і розміри</u>.</li>
+	</ol>
+	
+	<script>
+		"use strict"
+		
+		/*
+		let r = 0;
+		for(let p = 1; p <= 5; p++) {
+			r = 0.1 * Math.pow(10, p); // !!!!!!!!!!
+			console.log(p, r, rnd(0, r));
+		}
+		
+		for(let p = 1; p <= 5; p++) {			
+			console.log(p, rnd(0, 1));
+		}
+		
+		
+		function arri(arr, i) {
+			arr[i] = null;
+		}
+		
+		let arr = [0, 1, 2, 3];
+		
+		arri(arr, 2);
+		
+		console.log(arr);
+		*/
+		
+		
+		let rnd = (min, max) => {return Math.floor(Math.random() * (max - min + 1)) + min;};
+		
+		
+		function task1(form_table, task, n, m = 1, min, max) {
+			if (min === undefined || max === undefined) {
+				min = 0;
+				max = 0.1 * Math.pow(10, rnd(1, 5));
+				console.log(min, max);
+			}
+			
+			
+			const tab = document.createElement('table');
+			tab.style.width = '100%';
+            tab.style.border = '1px solid black';
+            tab.style.borderCollapse = 'collapse'; // об'єднує межі комірок в одну, тобто між сусідніми комірками буде тільки одна лінія межі
+
+            // Створюємо заголовок
+            const headerRow = document.createElement('tr');
+            for (let i = 0; i < n; i++) {
+                const th = document.createElement('th');
+                th.style.border = '1px solid black';
+                th.style.padding = '2px';
+                th.textContent = `${i}`;
+                headerRow.appendChild(th);
+            }
+            tab.appendChild(headerRow);
+			
+			
+			let array = [];
+			let row = []
+			let count = 0;
+			let value = 0;
+			for(let r = 0; r < m; r++) {
+				row = [];
+				for (let c = 0; c < n; c++) {
+					value = rnd(min, max);
+					//count += !(value % 2);
+					switch(task) {
+						case 'парні числа': count += !(value % 2); break;
+						case '0': count += (value === 0); break;
+					}					
+					row.push(value);
+				}
+				array.push(row);
+			}			
+			console.log(form_table, array, count);
+
+            // Створюємо рядки з масивом
+			/*
+			const dataRow = document.createElement('tr');
+            for (let i = 0; i < n; i++) {
+                const td = document.createElement('td');
+                td.style.border = '1px solid black';
+                td.style.padding = '2px';
+				td.style.textAlign = 'center';
+				td.style.backgroundColor = array[i] % 2 ? '' : 'Khaki';
+                td.textContent = `${array[i]}`;
+                dataRow.appendChild(td);
+            }
+            tab.appendChild(dataRow);
+			*/
+            for (let row of array) {
+				const dataRow = document.createElement('tr');
+				for (let col of row) {
+					const td = document.createElement('td');
+					td.style.border = '1px solid black';
+					td.style.padding = '2px';
+					td.style.textAlign = 'center';
+					switch(task) {
+						case 'парні числа': td.style.backgroundColor = col % 2 ? '' : 'Khaki'; break;
+						case '0': td.style.backgroundColor = col === 0 ? 'Khaki' : ''; break;
+					}					
+					td.textContent = `${col}`;
+					dataRow.appendChild(td);
+				}
+				tab.appendChild(dataRow);
+			}			
+			
+			//const br = document.createElement('br');
+			//tab.appendChild(br);
+			//tab.appendChild(count);
+			
+			//const textDiv = document.createElement('div');
+			//textDiv.textContent = `Кількість парних елементів `;
+			//tab.parentNode.appendChild(textDiv);
+			
+			const footer = document.createElement('tfoot');			
+			const footer_tr = document.createElement('tr');
+			footer.appendChild(footer_tr);
+			const footer_td = document.createElement('td');
+			//footer_td.style.setAttribute('colspan', n);
+			footer_td.setAttribute('colspan', n);
+			footer_td.textContent = `Кількість парних елементів = ${count}`;
+			footer.appendChild(footer_td);
+			tab.appendChild(footer);
+            // Додаємо таблицю в контейнер
+            const container = document.getElementById(form_table);
+            container.appendChild(tab);
+		}
+		
+
+		
+	</script>
+	<!--------------------------------------------------------------------------------------------->
+	<!--------------------------------------------------------------------------------------------->
+	
+	<details>
+		<summary><b>Завдання 1: У масиві А [ N ] знайти кількість парних елементів.</b></summary>
+		
+		<form id="task_1_1"> <!--------------------------------------------------------------------------------------------->
+			<p><u style='background-color: Yellow'>Перший рівень</u>
+				<button type="submit">Введіть розмір масиву A, N=?</button>
+				<div id="table_1_1"></div>
+				<br>
+			</p>
+		</form>
+		<script>
+			const form_1_1 = document.getElementById('task_1_1');
+			form_1_1.addEventListener('submit', function(event) {
+				event.preventDefault();
+				let n = prompt("Введіть розмір масиву A, N=?");
+				//console.log('Завдання 1, рівень 1', n);
+				//alert(`Завдання 1, рівень 1: N = ${n}`);				
+				task1('table_1_1', 'парні числа', n); // form_table, task, n, m = 1, min, max
+			});
+		</script>
+		
+		<form id="task_1_2"> <!--------------------------------------------------------------------------------------------->
+			<p><u style='background-color: Yellow'>Другий рівень</u>
+				<input type="number" id="task_1_2_N" placeholder="Введіть розмір масиву A, N=?" step="1" required>
+				<button type="submit">Виконати</button>
+				<div id="table_1_2"></div>
+				<br>
+			</p>
+		</form>
+		<script>
+			const form_1_2 = document.getElementById('task_1_2');
+			form_1_2.addEventListener('submit', function(event) {
+				event.preventDefault();				
+				let n = document.getElementById('task_1_2_N').value;
+				console.log('Завдання 1, рівень 2', n);
+				//alert(`Завдання 1, рівень 2: N = ${n}`);
+				task1('table_1_2', 'парні числа', n);
+			});
+		</script>
+		
+		<form id="task_1_3"> <!--------------------------------------------------------------------------------------------->
+			<p><u style='background-color: Yellow'>Третій рівень</u>
+				<input type="number" id="task_1_3_N" placeholder="Введіть розмір масиву A, N=?" step="1" required>
+				<input type="number" id="task_1_3_min" placeholder="Мінімальне значення діапазону" step="1" required>
+				<input type="number" id="task_1_3_max" placeholder="Максимальне значення діапазону" step="1" required>
+				<button type="submit">Виконати</button>
+				<div id="table_1_3"></div>
+				<br>
+			</p>
+		</form>
+		<script>
+			const form_1_3 = document.getElementById('task_1_3');
+			form_1_3.addEventListener('submit', function(event) {
+				event.preventDefault();
+				let n = document.getElementById('task_1_3_N').value;
+				let min = parseInt(document.getElementById('task_1_3_min').value, 10);
+				let max = parseInt(document.getElementById('task_1_3_max').value, 10);
+				console.log(`Завдання 1, рівень 3: N = ${n}, Min = ${min}, Max = ${max}`);
+				if (min < max) {
+					//alert(`Завдання 1, рівень 3: N = ${n}, Min = ${min}, Max = ${max}`);
+					task1('table_1_3', 'парні числа', n, 1, min, max);
+				}
+				else {
+					alert(`ПОМИЛКА! Мінімальне ${min} значення БІЛЬШЕ або ДОРІВНЄ Максимальному ${max} !!!`);
+				}
+			});
+		</script>		
+	</details>
+	<br>
+	
+	
+	<details> <!--------------------------------------------------------------------------------------------->
+		<summary><b>Завдання 2: Знайти кількість елементів масиву С [ N х M ], рівних 0</b></summary>
+		
+		<form id="task_2_1"> <!--------------------------------------------------------------------------------------------->
+			<p><u style='background-color: Yellow'>Перший рівень</u>
+				<button type="submit">Введіть розмір масиву С, N=?, M=?</button>
+				<div id="table_2_1"></div>
+				<br>
+			</p>
+		</form>
+		<script>
+			const form_2_1 = document.getElementById('task_2_1');
+			form_2_1.addEventListener('submit', function(event) {
+				event.preventDefault();
+				let n = prompt("Введіть розмір масиву С, N=?");
+				let m = prompt("Введіть розмір масиву С, M=?");
+				//console.log('Завдання 1, рівень 1', n);
+				//alert(`Завдання 1, рівень 1: N = ${n}`);				
+				task1('table_2_1', '0', n, m); // form_table, task, n, m = 1, min, max
+			});
+		</script>
+		
+		
+		<form id="task_2_2"> <!--------------------------------------------------------------------------------------------->
+			<p><u style='background-color: Yellow'>Другий рівень</u>
+				<input type="number" id="task_2_2_N" placeholder="Розмір масиву С, N=?" step="1" required>
+				<input type="number" id="task_2_2_M" placeholder="Розмір масиву С, M=?" step="1" required>
+				<button type="submit">Виконати</button>
+				<div id="table_2_2"></div>
+				<br>
+			</p>
+		</form>
+		<script>
+			const form_2_2 = document.getElementById('task_2_2');
+			form_2_2.addEventListener('submit', function(event) {
+				event.preventDefault();				
+				let n = document.getElementById('task_2_2_N').value;
+				let m = document.getElementById('task_2_2_M').value;
+				console.log('Завдання 2, рівень 2', n, m);
+				//alert(`Завдання 1, рівень 2: N = ${n}`);
+				task1('table_2_2', '0', n, m);
+			});
+		</script>
+		
+		
+		<form id="task_2_3"> <!--------------------------------------------------------------------------------------------->
+			<p><u style='background-color: Yellow'>Третій рівень</u>
+				<input type="number" id="task_2_3_N" placeholder="Розмір масиву C, N=?" step="1" required>
+				<input type="number" id="task_2_3_M" placeholder="Розмір масиву C, M=?" step="1" required>
+				<input type="number" id="task_2_3_min" placeholder="Мінімальне значення діапазону" step="1" required>
+				<input type="number" id="task_2_3_max" placeholder="Максимальне значення діапазону" step="1" required>
+				<button type="submit">Виконати</button>
+				<div id="table_2_3"></div>
+				<br>
+			</p>
+		</form>
+		<script>
+			const form_2_3 = document.getElementById('task_2_3');
+			form_2_3.addEventListener('submit', function(event) {
+				event.preventDefault();
+				let n = document.getElementById('task_2_3_N').value;
+				let m = document.getElementById('task_2_3_M').value;
+				let min = parseInt(document.getElementById('task_2_3_min').value, 10);
+				let max = parseInt(document.getElementById('task_2_3_max').value, 10);
+				console.log(`Завдання 2, рівень 3: N = ${n}, M = ${m}, Min = ${min}, Max = ${max}`);
+				if (min < max) {
+					//alert(`Завдання 1, рівень 3: N = ${n}, Min = ${min}, Max = ${max}`);
+					task1('table_2_3', '0', n, m, min, max);
+				}
+				else {
+					alert(`ПОМИЛКА! Мінімальне ${min} значення БІЛЬШЕ або ДОРІВНЄ Максимальному ${max} !!!`);
+				}
+			});
+		</script>
+		
+	</details>
+	<br>
+		
+	
+</body>
+</html>
