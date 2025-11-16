@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>513-і, Золотухін Андрій</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
+</head>
+
+<body>
+    <h1>Програмування та підтримка веб-застосувань (JavaScript) (3к_5с)<br>Лабораторна робота 4. Функції та параметри.<br>Варіант 8.<br>513-і, Золотухін Андрій</h1>
+	<hr>
+	
+	<ol>Написати скрипт:
+		<li>Для першого рівня складності вихідні дані вводяться за допомогою <b>prompt()</b> і виводяться через <b>document.write()</b>.</li>
+		<li>Для другого та третього рівня складності дані <u>вводяться через поля введення HTML форми</u> та <u>виводяться також у поле форми</u>. А для <u>виконання обчислень передбачається одна або більше кнопок форми</u>.</li>
+		<li>Якщо у завданні передбачається виведення великої кількості даних, оформити їх у вигляді списку чи таблиці.</li>
+	</ol>
+	
+	<script>
+		"use strict"
+		
+		function Even(K) {
+			return K % 2 === 1;
+		}
+		
+		
+		function task1(nums) { // ,,, 21 12, , 3, , ,2 ,2 324, , 3, 77, 952, 7, 9, 978, 74 , 12, 87, 9221, 72, 
+			do {
+				nums = nums.replace(" ", "");
+				nums = nums.replace(",,", ",");
+			} while ([" ", ",,"].some(c => nums.includes(c))); //(text.includes(" "));
+			
+			while (nums.charAt(0) === ',') {
+				nums = nums.slice(1);
+			}
+			
+			while (nums.charAt(nums.length - 1) === ',') {
+				nums = nums.slice(0, -1);
+			}		
+			console.log(`Task 1: '${nums}'`);
+			
+			nums = nums.split(",");
+			//console.log(nums);
+			
+			if(nums.length < 10) {
+				return "<h3 style='color: red'>Введено менше 10 значень! Повторіть введення даних!</h3>"
+			}
+			
+			nums = nums.map(Number);
+			console.log(nums);
+			//nums_test = nums.map();
+			
+			let count = 0;
+			for(let n of nums)
+				count += !(Even(n));
+			
+			return `У послідовності '${nums}' знайдено <u>парних чисел ${count}</u>`;
+		}
+		
+		
+		function task2_duplicateEncode(word, one='(', multitude=')') {
+			let letters = word.split('');
+			
+			let uletters = letters.reduce((acc, item) => {
+				acc.uletters_count[item] = (acc.uletters_count[item] || 0) + 1;
+				if (acc.uletters_count[item] === 2) {
+					acc.uletters.push(item);
+				}
+				return acc;
+			}, { uletters_count: {}, uletters: [] }).uletters;
+
+			console.log(uletters);
+			
+			
+			let uletters2 = [];
+			let uletters_count2 = [];
+			///
+			for(let i = 0; i < letters.length; i++) {
+				if (!uletters2.includes(letters[i])) {
+					uletters2.push(letters[i]);
+					//uletters_count2.push(1);
+					uletters_count2.push(0);
+				}
+				//else uletters_count2[uletters2.indexOf(letters[i])] += 1;
+				uletters_count2[uletters2.indexOf(letters[i])] += 1;
+				console.log(uletters2, uletters_count2);
+			}
+			
+			
+			letters.forEach((item, index, array) => {				
+				array[index] = uletters.includes(item) ? multitude : one;
+			});
+
+			console.log(letters);
+			return letters.join('');
+		}
+		
+
+		
+	</script>
+	<!--------------------------------------------------------------------------------------------->
+	<!--------------------------------------------------------------------------------------------->
+	
+	<details>
+		<summary><b>Перший рівень : Описати функцію Even (K) логічного типу, що повертає TRUE, якщо цілий параметр K є парним, і FALSE інакше. З її допомогою знайти кількість парних чисел у наборі із 10 цілих чисел</b></summary>
+		
+		<form id="task_1"> <!--------------------------------------------------------------------------------------------->
+			<button type="submit">Ввести послідовність чисел</button>
+		</form>
+		<script>
+			const form_1 = document.getElementById('task_1');
+			form_1.addEventListener('submit', function(event) {
+				event.preventDefault();
+				let nums = prompt("Введіть послідовність чисел, розділених комами");
+				document.write(`<h3>${task1(nums)}</h3>`);
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details> <!--------------------------------------------------------------------------------------------->
+		<summary><b>Другий рівень: Визначте функцію duplicateEncode ( word ), яка повинна на підставі параметра word формувати новий рядок такої самої довжини і що складається з символів '(' і ')'. res[i]='(' якщо символ word [i] зустрічається у рядку 1 раз і res [i]=')' якщо символ word [i] зустрічається у рядку більше одного разу. Реєстр символів не враховувати. Під час виконання завдання визначити ще одну службову функцію.</b></summary>		
+		<form id="task_2"> <!--------------------------------------------------------------------------------------------->
+			<style>#task_2_input {width: 300px;}</style>
+			<input type="text" id="task_2_input" placeholder="Введіть слово для перетворення" step="1" required>
+			<button type="submit">Виконати</button>
+			<div id="task_2_result"></div>
+			<br>
+		</form>
+		<script>
+			const form_2 = document.getElementById('task_2');
+			form_2.addEventListener('submit', function(event) {
+				event.preventDefault();
+				let word = document.getElementById('task_2_input').value;
+				//word = 'titanic';
+				let result = task2_duplicateEncode(word, '1', '*');				
+				const resultDisplay = document.getElementById('task_2_result');
+				resultDisplay.style.fontSize = '32px';
+				resultDisplay.textContent = `'${word}' >>> '${result}'`;
+			});
+		</script>		
+	</details>
+	<br>
+	
+	
+	<details> <!--------------------------------------------------------------------------------------------->
+		<summary><b>Написати спадкоємця від масиву, який додатково містить метод, який виконує над кожним елементом якусь операцію. І створює новий масив з отриманих значень (без повторень) та частот їх повторень. Причому операція передається методу через параметр, заданий як функція callback.</b></summary>
+		
+		<form id="task_3"> <!--------------------------------------------------------------------------------------------->
+			<p><u style='background-color: Yellow'>Перший рівень</u>
+				<button type="submit">Введіть розмір масиву С, N=?, M=?</button>
+				<div id="table_3"></div>
+				<br>
+			</p>
+		</form>
+		<script>
+			const form_3 = document.getElementById('task_3');
+			form_3.addEventListener('submit', function(event) {
+				event.preventDefault();
+				let n = prompt("Введіть розмір масиву С, N=?");
+				let m = prompt("Введіть розмір масиву С, M=?");
+				//console.log('Завдання 1, рівень 1', n);
+				//alert(`Завдання 1, рівень 1: N = ${n}`);				
+				//task1('table_2_1', '0', n, m); // form_table, task, n, m = 1, min, max
+			});
+		</script>
+		
+	</details>
+		
+	
+</body>
+</html>
