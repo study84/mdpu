@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>513-і, Золотухін Андрій</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
+	
+	<style>
+		/* Контейнер для всех fieldset, чтобы они шли в одну строку */
+		.form-container {
+		  display: flex;
+		  justify-content: flex-start;
+		  align-items: stretch; /* Убедимся, что все элементы растягиваются по высоте */
+		  gap: 10px; /* Промежутки между fieldset */
+		}
+
+		/* Стили для каждого fieldset, чтобы высота была одинаковой */
+		fieldset {
+		  display: flex;
+		  flex-direction: column; /* Элементы внутри fieldset идут по вертикали */
+		  justify-content: center; /* Выровнять элементы по вертикали */
+		  align-items: center; /* Выравнивание по центру */
+		  //min-height: 100px; /* Задаем минимальную высоту для каждого fieldset */
+		  padding: 10px;
+		  border: 1px solid #ccc;
+		}
+
+		/* Стили для legend */
+		legend {
+		  font-weight: bold;
+		  margin-right: 10px;
+		}
+
+		/* Стили для радиокнопок, чтобы они располагались горизонтально */
+		.radio-group {
+		  display: flex;
+		  gap: 20px; /* Отступы между радиокнопками */
+		}
+
+		/* Стили для label */
+		label {
+		  margin-bottom: 0; /* Убираем отступы между метками */
+		}
+
+		/* Стили для поля ввода */
+		#text {
+		  padding: 5px;
+		  margin-top: 10px;
+		  width: 450px;
+		}
+		
+		#attr1, #attr2 {
+		  padding: 5px;
+		  margin-top: 10px;
+		  
+		}
+	</style>
+</head>
+
+<body>
+    <h1>Програмування та підтримка веб-застосувань (JavaScript) (3к_5с)<br>Лабораторна робота 5. Події.<br>Варіант 8.<br>513-і, Золотухін Андрій</h1>
+	<hr>
+	
+	<ol>Написати невеликий FrontEnd додаток, що складається з HTML форми та скрипту на JS, і виконує завдання відповідно до запропонованої Вами задачі:
+		<li>Тема завдання вибирається самостійно, але це повинен бути інтерактивний калькулятор чогось.</li>
+		<li>Для введення даних необхідно використовувати як елементи текстового введення і кнопки а й інші елементи т.к. списки, чек-бокси і т.д.</li>
+		<li>Забороняється для перевірки використовувати регулярні вирази.</li>
+		<li>Вимоги до виконання завдання. Залежно від кількості виконаних вимог ставиться оцінка:
+			<ol type="a">
+				<li>чисельний розрахунок або видається рекомендації на підставі введення не менше 4-10 параметрів.</li>
+				<li>під час неправильного введення або пропуску обов'язкового параметра поруч із полем, в якому відбулася помилка введення, з'являється повідомлення про помилку.</li>
+				<li>при зміні параметрів, ці зміни відразу впливають на результат і можливо інші параметри (при введенні або переході до наступної підлоги введення).</li>
+				<li>наявність залежностей як кінцевого результату від усіх параметрів, а й взаємозалежностей серед параметрів.</li>
+			</ol>
+		</li>
+	</ol>
+	
+	<script>
+		"use strict"
+		
+		function str() { // abcdefghijklmnopqrstuvwxyz0123456789
+			const strFunc = document.querySelector('input[name="option"]:checked').id;
+			const textInput = document.getElementById("text").value;
+			
+			let attr1 = parseInt(document.getElementById("attr1").value, 10);
+			const attr2_status = document.getElementById("attr2_status").checked;
+			let attr2 = parseInt(document.getElementById("attr2").value, 10);			
+			console.log(`1: StrFunc: '${strFunc}' Text: '${textInput}' Attr_1: ${attr1} Attr_2_Status: ${attr2_status} Attr_2: ${attr2}`);
+			
+			if(textInput.length > 0) {
+				console.log(`CONTROL 'substr' >>> (0): '${textInput.substr(0)}' (0, 5): '${textInput.substr(0, 5)}'`);
+				console.log(`CONTROL 'substring' >>> (0): '${textInput.substring(0)}' (0, 5): '${textInput.substring(0, 5)}'`);
+				if (Number.isNaN(attr1)) {
+					attr1 = 0;
+				}
+				if (Number.isNaN(attr2)) {
+					attr2 = 0;
+				}
+				
+				console.log(`2: StrFunc: '${strFunc}' Text: '${textInput}' Attr_1: ${attr1} Attr_2_Status: ${attr2_status} Attr_2: ${attr2}`);				
+				
+				let result;
+				if (attr2_status === true && strFunc === 'substr') {
+					result = textInput.substr(attr1, attr2);
+					console.log('Test: ', result);
+				}
+				else if (attr2_status === false && strFunc === 'substr') {
+					result = textInput.substr(attr1);
+					console.log('Test: ', result);
+				}				
+				else if (attr2_status === true && strFunc === 'substring') {
+					result = textInput.substring(attr1, attr2);
+					console.log('Test: ', result);
+				}
+				else if (attr2_status === false && strFunc === 'substring') {
+					result = textInput.substring(attr1);
+					console.log('Test: ', result);
+				}
+				
+				document.getElementById('result').textContent = result;
+			}		
+		}
+		
+		
+		
+	</script>
+	
+	
+	<h3>Написати калькулятор, для самостійного дослідження рядкових функцій substr() та substring()</h3>
+	<div class="form-container">
+		<fieldset>
+			<legend>Виберіть функцію</legend>
+			<div class="radio-group">
+				<label for="substr">
+					<input type="radio" id="substr" name="option" checked>substr
+				</label>
+				<label for="substring">
+					<input type="radio" id="substring" name="option">substring
+				</label>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<legend>Введіть початковий текст</legend>
+				<input type="text" id="text" placeholder="Введіть початковий текст" required>
+		</fieldset>
+			
+		<fieldset>
+			<legend>Start</legend>
+				<input type="number" id="attr1" placeholder="Починаючи з..." step="1" required>
+		</fieldset>
+			
+		<fieldset>
+			<legend id="attr2_legend">Length</legend>
+				<label>
+					<input type="checkbox" id="attr2_status" title="Використовувати" checked>
+					<input type="number" id="attr2" placeholder="Значення 2-го параметра" step="1" required>
+				</label>
+					
+		</fieldset>		
+	</div>
+	<p id="result" style="font-size: 36px;"></p>
+
+	
+	<script>
+		/*
+			addEventListener — это метод в JavaScript, который используется для привязки обработчика события к элементу на веб-странице. Он позволяет вам слушать определённые события (например, клик, нажатие клавиши, изменение поля ввода) и выполнять определённый код, когда это событие происходит.
+		*/
+	
+		document.querySelectorAll('input[name="option"]').forEach(radio => {
+			radio.addEventListener('change', (event) => {
+				//console.log('Виберіть функцію:', event.target.id);
+				document.getElementById("attr2_legend").textContent = event.target.id === 'substr' ? 'Length' : 'End';
+				str();
+			});
+		});
+		
+		document.getElementById("text").addEventListener("input", str);
+		
+		document.getElementById("attr1").addEventListener("input", str);
+		
+		document.getElementById("attr2_status").addEventListener("change", str)
+		document.getElementById("attr2").addEventListener("input", str);
+	
+	
+	/*
+		const optionRadios = document.getElementsByName("option");
+		const textInput = document.getElementById("text");
+		const startInput = document.getElementById("attr1");
+		const useLengthCheckbox = document.querySelector('[name="attr2_using"]');
+		const lengthInput = document.getElementById("attr2");
+		
+		const result = document.getElementById("result");
+		
+		console.log(optionRadios, optionRadios[0]);
+		
+
+		// --- Навешиваем обработчики событий ---
+		textInput.addEventListener("input", str2);
+		startInput.addEventListener("input", str2);
+		lengthInput.addEventListener("input", str2);
+		useLengthCheckbox.addEventListener("change", str2);
+
+		optionRadios.forEach(radio => {
+			radio.addEventListener("change", str2);
+		});
+
+		// Запускаем первый расчёт
+		//updateResult();
+	*/
+
+	
+</script>
+
+	
+</body>
+</html>
