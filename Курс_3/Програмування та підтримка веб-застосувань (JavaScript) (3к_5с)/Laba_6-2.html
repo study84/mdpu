@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>513-і, Золотухін Андрій</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>	
+</head>
+
+<body>
+    <h1>Програмування та підтримка веб-застосувань (JavaScript) (3к_5с)<br>Лабораторна робота 6. Регулярні вирази - 2.<br>Варіант 8.<br>513-і, Золотухін Андрій</h1>
+	<hr>
+	
+	<ol>Основні вимоги:
+		<li><a href='https://regex101.com/'>завдання 1 і 2 можна виконати з використанням онлайн калькуляторів регулярних виразів</a></li>
+		<li>завдання 3 і 4 виконуються у вигляді скрипта, що виводить вхідні дані, регулярний вираз і результат, де вхідні дані можуть бути константами.</li>
+		<li>завдання 5 і 6 виконуються з використанням форм, де для кожного завдання передбачено окреме поле для введення даних і поле для виведення результату.</li>
+	</ol>
+	
+	<script>
+		"use strict"
+	</script>
+	
+	
+	<details>
+		<summary><b>8: За допомогою test визначити, що переданий рядок починається з <u>http</u> або з <u>https</u>.</b></summary>		
+		<form id="task_8"> <!--------------------------------------------------------------------------------------------->
+			<input type="text" size="25" id="userInput_8_1" placeholder="Введіть рядок для перевірки" required>			
+			<button type="submit">Виконати</button>			
+		</form>
+		<p id="result_8" style="font-size: 18px;"></p>
+		<script>
+			const form_8 = document.getElementById('task_8');
+			form_8.addEventListener('submit', function(event) {
+				event.preventDefault();
+				const template = /^https?/i;
+				const txt = document.getElementById('userInput_8_1').value;				
+				const result = template.test(txt);
+				document.getElementById("result_8").textContent = `${result}`;
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>11: За допомогою test перевірити, чи є рядок числом з довжиною до 12 цифр.</b></summary>
+		<form id="task_11"> <!--------------------------------------------------------------------------------------------->
+			<input type="text" size="25" id="userInput_11_1" placeholder="Введіть рядок для перевірки" required >			
+			<button type="submit">Виконати</button>			
+		</form>
+		<p id="result_11" style="font-size: 18px;"></p>
+		<script>
+			const form_11 = document.getElementById('task_11');
+			form_11.addEventListener('submit', function(event) {
+				event.preventDefault();
+				const template = /^[0-9]{1,12}$/;
+				const txt = document.getElementById('userInput_11_1').value;				
+				const result = template.test(txt);
+				document.getElementById("result_11").textContent = `${result}`;
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>14: Замінити всі повторювані пробіли на один.</b></summary>		
+		<form id="task_14"> <!--------------------------------------------------------------------------------------------->
+			<input type="text" size="30" id="userInput_14" placeholder="Введіть рядок для перевірки" required>
+			<button type="submit">Виконати</button>			
+		</form>
+		<p id="result_14" style="font-size: 18px;"></p>
+		<script>
+			const form_14 = document.getElementById('task_14');
+			form_14.addEventListener('submit', function(event) {
+				event.preventDefault();
+				const template = /  /gi;
+				const txt = document.getElementById('userInput_14').value;				
+				const result = txt.replace(template, ' ');
+				document.getElementById("result_14").textContent = `${result}`;
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>19: Дано рядок, в якому є вставки {{текст}}. Знайти всі такі вставки і поміняти в них порядок букв на зворотний (тобто з 'текст' потрібно отримати 'тскет').</b></summary>		
+		<form id="task_19"> <!--------------------------------------------------------------------------------------------->
+			<input type="text" size="50" id="userInput_19_1" placeholder="Введіть рядок для перевірки" required>
+			<input type="text" size="18" id="userInput_19_2" placeholder="Введіть шаблон {текст}" required>
+			<button type="submit">Виконати</button>
+		</form>
+		<p id="result_19" style="font-size: 18px;"></p>
+		<script>
+			const form_19 = document.getElementById('task_19'); // Я люблю читати книгу на дивані, де завжди зберігаю мою улюблену книгу поруч.
+			form_19.addEventListener('submit', function(event) {
+				event.preventDefault();
+				const txt = document.getElementById('userInput_19_1').value;
+				const template = new RegExp(`${document.getElementById('userInput_19_2').value}`, 'gi');
+				//const reverse = template.split('').reverse().join('');
+				function reverse(str) {
+					return str.split('').reverse().join('').toUpperCase();
+				}
+				const result = txt.replace(template, reverse);
+				document.getElementById("result_19").textContent = `${result}`;
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>16: Знайти і видалити всі коментарі HTML.</b></summary>		
+		<form id="task_16"> <!--------------------------------------------------------------------------------------------->
+			<!--<input type="text" size="50" id="userInput_16_1" placeholder="Введіть рядок для перевірки" required>-->
+			<textarea id="userInput_16_1" placeholder="Введіть рядок для перевірки" required rows="8" style="width: 95%"></textarea>
+			<br>
+			<button type="submit">Виконати</button>
+		</form>		
+		<textarea id="result_16" placeholder="Введіть рядок для перевірки" rows="16" style="width: 95%" readonly></textarea>
+		<script>
+			/*
+				<div>
+				<!-- Це коментар -->
+				<p>Це параграф</p>
+				<!-- Коментар з <span>HTML</span> тегами -->
+				<footer>Футер</footer>
+				</div>
+			*/		
+			const form_16 = document.getElementById('task_16');
+			form_16.addEventListener('submit', function(event) {
+				event.preventDefault();
+				const txt = document.getElementById('userInput_16_1').value;
+				const template = new RegExp(`<!--(.*?)-->`, 'g');				
+				const result = txt.replace(template, '');
+				document.getElementById("result_16").textContent = `${result}`;
+			});
+		</script>
+	</details>
+	<br>
+	
+	<details>
+		<summary><b>27: За допомогою <u>ОДНОГО</u> регулярного виразу видалити з рядка всі повторювані слова. Наприклад: 'dsf xxx xxx sd' >> 'dsf xxx sd'.</b></summary>
+		<form id="task_27"> <!--------------------------------------------------------------------------------------------->
+			<input type="text" size="50" id="userInput_27" placeholder="Введіть рядок для перевірки" required value="dsf xxx xxx sd">			
+			<button type="submit">Виконати</button>
+		</form>
+		<p id="result_27" style="font-size: 18px;"></p>
+		<script>
+			const form_27 = document.getElementById('task_27');
+			form_27.addEventListener('submit', function(event) {
+				event.preventDefault();				
+				const txt = document.getElementById('userInput_27').value;
+				//const result = (document.getElementById('userInput_27').value.replace(/  /gi, ' ')).split(/ /);				
+				const result = document.getElementById('userInput_27').value.replace(/\b(\w+)\b(?=.*\b\1\b)/g, '');
+				document.getElementById("result_27").textContent = `${result}`;
+			});
+		</script>
+	</details>
+	<br>
+	
+</body>
+</html>

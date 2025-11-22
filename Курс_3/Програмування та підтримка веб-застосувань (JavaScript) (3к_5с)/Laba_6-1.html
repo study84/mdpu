@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>513-і, Золотухін Андрій</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>	
+</head>
+
+<body>
+    <h1>Програмування та підтримка веб-застосувань (JavaScript) (3к_5с)<br>Лабораторна робота 6. Регулярні вирази - 1.<br>Варіант 8.<br>513-і, Золотухін Андрій</h1>
+	<hr>
+	
+	<ol>Завдання для:
+		<li>1-го рівня можуть бути виконані з використанням онлайн калькуляторів регулярних виразів (https://regex101.com/).</li>
+		<li>2-го рівня у вигляді скрипта, який виводить вихідні дані, регулярний вираз і результат, де вихідні дані можуть бути константами.</li>
+		<li>3-го рівня завдання виконуються з використанням форм. Де для кожного завдання є поле для введення вихідних даних. І поле для виведення результату.</li>		
+	</ol>
+	
+	<script>
+		"use strict"
+	</script>
+	
+	
+	<details>
+		<summary><b>8: Дано рядок “ab abab abab abababab abea”. Напишіть регулярку, яка знайде рядки за шаблоном: рядок “ab” повторюється 1 або більше разів. Показати рішення.</b></summary>		
+		<form id="task_8"> <!--------------------------------------------------------------------------------------------->
+			<input type="text" size="25" id="userInput_8_1" value="ab abab abab abababab abea" required readonly>
+			<input type="text" size="6" id="userInput_8_2" value="ab" required readonly>
+			<button type="submit">Виконати</button>			
+		</form>
+		<p id="result_8" style="font-size: 18px;"></p>
+		<script>
+			const form_8 = document.getElementById('task_8');
+			form_8.addEventListener('submit', function(event) {
+				event.preventDefault();
+				const txt = document.getElementById('userInput_8_1').value;
+				const result = txt.match(/(ab)+/g);
+				document.getElementById("result_8").textContent = `COUNT = ${result.length}: ${result.join('\t')}`;
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>11: Дано рядок “23 2+3 2++3 2+++3 345 567”. Напишіть регулярку, яка знайде рядки 2+3, 2++3, 2+++3, не захопивши інші (+ може бути будь-яка кількість).</b></summary>		
+		<form id="task_11"> <!--------------------------------------------------------------------------------------------->
+			<input type="text" size="25" id="userInput_11_1" value="23 2+3 2++3 2+++3 345 567" required readonly>
+			<input type="text" size="6" id="userInput_11_2" value="2...+...3" required readonly>
+			<button type="submit">Виконати</button>			
+		</form>
+		<p id="result_11" style="font-size: 18px;"></p>
+		<script>
+			const form_11 = document.getElementById('task_11');
+			form_11.addEventListener('submit', function(event) {
+				event.preventDefault();
+				const txt = document.getElementById('userInput_11_1').value;
+				const result = txt.match(/2\++3/g);
+				document.getElementById("result_11").textContent = `COUNT = ${result.length}: ${result.join('\t')}`;
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>21: Дано рядок “aa aba abba abbba abbbba abbbbba”. Напишіть регулярку, яка знайде рядки виду aba, в яких “b” зустрічається менше 3-х разів (включно).</b></summary>		
+		<form id="task_21"> <!--------------------------------------------------------------------------------------------->
+			<input type="text" size="30" id="userInput_21_1" value="aa aba abba abbba abbbba abbbbba" required readonly>			
+			<button type="submit">Виконати</button>			
+		</form>
+		<p id="result_21" style="font-size: 18px;"></p>
+		<script>
+			const form_21 = document.getElementById('task_21');
+			form_21.addEventListener('submit', function(event) {
+				event.preventDefault();
+				const txt = document.getElementById('userInput_21_1').value;
+				const result = txt.match(/ab{1,3}a/g);
+				document.getElementById("result_21").textContent = `COUNT = ${result.length}: ${result.join('\t')}`;
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>27: Дано рядок “ave a#b a2b a$b a4b a5b a-b acb”. Напишіть регулярку, яка знайде рядки наступного вигляду: по краях стоять літери “a” і “b”, а між ними - не літера і не цифра.</b></summary>		
+		<form id="task_27"> <!--------------------------------------------------------------------------------------------->
+			<input type="text" size="30" id="userInput_27_1" value="ave a#b a2b a$b a4b a5b a-b acb" required readonly>			
+			<button type="submit">Виконати</button>			
+		</form>
+		<p id="result_27" style="font-size: 18px;"></p>
+		<script>
+			const form_27 = document.getElementById('task_27');
+			form_27.addEventListener('submit', function(event) {
+				event.preventDefault();
+				const txt = document.getElementById('userInput_27_1').value;
+				const result = txt.match(/a[^A-Za-z0-9]b/g);
+				document.getElementById("result_27").textContent = `COUNT = ${result.length}: ${result.join('\t')}`;
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>36: Дано рядок “wйw wяw wёw wqw”. Напишіть регулярку, яка знайде рядки такого вигляду: по краях стоять літери “w”, а між ними - літера кирилиці.</b></summary>
+		<form id="task_36"> <!--------------------------------------------------------------------------------------------->
+			<input type="text" size="30" id="userInput_36" value="wйw wяw wёw wqw" required readonly>			
+			<button type="submit">Виконати</button>			
+		</form>
+		<p id="result_36" style="font-size: 18px;"></p>
+		<script>
+			const form_36 = document.getElementById('task_36');
+			form_36.addEventListener('submit', function(event) {
+				event.preventDefault();
+				const txt = document.getElementById('userInput_36').value;
+				const result = txt.match(/w[А-Яа-я]w/g);				
+				document.getElementById("result_36").textContent = `COUNT = ${result.length}: ${result.join('\t')}`;
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>41: Дано рядок “aaa aaa aaa”. Напишіть регулярний вираз, який замінить перше “aaa” на “!”.</b></summary>
+		<form id="task_41"> <!--------------------------------------------------------------------------------------------->
+			<input type="text" size="30" id="userInput_41" value="aaa aaa aaa" required readonly>			
+			<button type="submit">Виконати</button>			
+		</form>
+		<p id="result_41" style="font-size: 18px;"></p>
+		<script>
+			const form_41 = document.getElementById('task_41');
+			form_41.addEventListener('submit', function(event) {
+				event.preventDefault();
+				const txt = document.getElementById('userInput_41').value;
+				const result = txt.replace(/aaa/, "!");
+				document.getElementById("result_41").textContent = `${result}`;
+			});
+		</script>
+	</details>
+	<br>	
+	
+
+	
+</body>
+</html>

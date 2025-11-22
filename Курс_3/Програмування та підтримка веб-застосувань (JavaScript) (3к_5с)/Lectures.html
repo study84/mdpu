@@ -110,11 +110,266 @@
 		//Правильні варіанти
 		let l=(""===0); // false
 		let z=("1"!==true); // true
+		
+		
+		функція showMessage(from, text)
+		{
+			if (text === undefined)
+			text = 'текст не передано’;
+			alert( from + ": " + text );
+		}
+		
+		функція showMessage(from, text)
+			{text = text || 'текст не передано';
 
 
+		function showMessage(from, text = " текст порожній") // Аргументи за замовчуванням Новий синтаксис
+		{
+		   alert( from + ": " + text );
+		}
+		
+		</pre>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>Лекция 4. Массивы.</b></summary>
+		<pre>
+			<a href = 'https://www.youtube.com/watch?v=5BpzTVEq6Bo'>JS Array Methods</a>
+			
+			arr.splice (index[, deleteCount , elem1, ..., elemN ]) - Видаляються Елементи починаючи з arr [index] і в кількості deleteCount 
+			
+			arr.slice (start, [end]) - Він повертає новий масив, який копіює елементи, починаючи з індексу start і до end (не включаючи end ).
+			
+			arr.concat (arg1, arg2...) - створює новий масив, який копіює дані з інших масивів і додаткові значення
+			
+			arr.indexOf (item, from) – шукає item, починаючи з індексу from, і повертає індекс, у якому було знайдено шуканий елемент, інакше -1.
+
+			arr.lastIndexOf (item, from) – те саме, але шукає справа наліво.
+
+			arr.includes (item, from) – шукає item, починаючи з індексу from, та повертає true, якщо пошук успішний.
+			
+			arr.forEach (function(item, index, array) {// ... робити щось з item}); // виконує дії над кожним елементом
+			
+			let result = arr.find(function(item, index, array)
+			//
+			let arr = [5, 12, 8, 130, 44];
+			let result = arr.filter(num => num > 10); // Найдем все элементы больше 10
+			console.log(result); // Выведет: [12, 130, 44]
+			
+			arr.filter ( function ( item , index , array )
+			
+			arr.map (function(item, index, array)
+			let lengths=["Bilbo","Gandalf"," Nazgul "].map(item => item.length);
+			
+			arr.sort();
+			
+			arr.reverse();
+			
+			let arr = [' Вася', 'Петя', 'Маша'];
+			let str = arr.join (';');
+			
+			arr.reduce (function( previousValue , item, index, array);
+			let arr = [1, 2, 3, 4, 5];
+			let result = arr.reduce(function(accumulator, item) {return accumulator + item;}, 0); // 0 - начальное значение для аккумулятора
+			let result = arr.reduce ((sum, current) => sum + current, 0);
+		
+		</pre>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>Лекция 2</b></summary>
+		<pre>
+			function sayHi()
+			{
+				for (var i = 0; i < arguments.length; i++) // Всі аргументи містяться в колекції arguments
+					alert( "Привіт," + arguments [i]);
+			}  
+			sayHi("Вінні", "П'ятачок");
+			
+			
+			
+			function sumAll(...args) { // args - ім'я масиву. Залишкові параметри можуть бути позначені через три точки .... Буквально це означає: «зібери параметри, що залишилися, і поклади їх у масив».
+			let sum = 0;
+			for (let arg of args)
+				sum + = arg;
+			return sum;
+			}
+
+
+
+			let arr = [3, 5, 1];
+			alert (Math.max (... arr)); // Оператор … під час виклику "розкриває" масив до списку аргументів.
+			
+			
+			
+			var sayHi = function(person) // анонімні функції
+			{
+				alert(" Привіт ," + person); 
+			};
+			sayHi('Вася'); 
 
 
 		
+		</pre>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>Лекция REGEXP</b></summary>
+		<pre>
+		var regexp = new RegExp("шаблон", "флаги"); - Синтаксис создания регулярного выражения
+			
+		Как правило, используют более короткую запись (шаблон внутри слешей "/"): Слеши "/" говорят JavaScript о том, что это регулярное выражение
+		var regexp = /шаблон/; // без флагов 
+		var regexp = /шаблон/gmi; // с флагами gmi (изучим их дальше)
+			
+			
+		Основа регулярного выражения – паттерн
+		var str = "Я люблю JavaScript!"; // будем искать в этой строке 
+		var regexp = /лю/; 
+		alert(str.search(regexp) ); // 2
+		.......
+		Сравните с обычным поиском: 
+		var str = "Я люблю JavaScript!"; 
+		var substr = "лю"; 
+		alert( str.indexOf(substr) ); // 2
+			
+			
+		Флаги 
+		i - Если этот флаг есть, то регэксп ищет независимо от регистра, то есть не различает между А и а.
+			var str = "Я люблю JavaScript!"; // будем искать в этой строке 
+			alert( str.search( /ЛЮ/ ) ); // -1 
+			alert( str.search( /ЛЮ/i ) ); // 2
+		g - Если этот флаг есть, то регэксп ищет все совпадения, иначе – только первое. 
+		m - Многострочный режим.
+
+		var str = "Люблю регэкспы я, но странною любовью"; 
+		alert( str.search( /лю/i ) ); // 0 Он возвращает позицию первого совпадения или -1, если ничего не найдено.
+		
+		str.match(reg)
+		var str = "ОЙ-Ой-ой"; 
+		var result = str.match( /ой/i ); 
+		alert( result[0] ); // ОЙ  (совпадение) 
+		alert( result.index ); // 0 (позиция) 
+		alert( result.input ); // ОЙ-Ой-ой (вся поисковая строка)
+		...
+		Если  часть  шаблона  обозначена  скобками,  то  она  станет  отдельным  элементом массива.
+		var str = "javascript - это такой язык"; 
+		var result = str.match( /JAVA(SCRIPT)/i ); 
+		alert( result[0] ); // javascript (всё совпадение полностью) 
+		alert( result[1] ); // script (часть совпадения, соответствующая скобкам) 
+		alert( result.index ); // 0 
+		alert( result.input ); // javascript - это такой язык 
+		...
+		str.match(reg) с флагом g При наличии флага g, вызов match возвращает обычный массив из всех совпадений.
+		var str = "ОЙ-Ой-ой"; 
+		var result = str.match( /ой/ig ); 
+		alert( result ); // ОЙ, Ой, ой
+		...
+		str.match(reg) с флагом g
+		var str = "ОЙ-Ой-ой"; 
+		var result = str.match( /ой/ig ); 
+		alert( result ); // ОЙ, Ой, ой
+		
+		
+		str.split(reg|substr, limit) - Разбивает  строку  в  массив  по  разделителю  –  регулярному  выражению  regexp  или подстроке substr.
+		alert('12-34-56'.split('-')) // [12, 34, 56]
+		alert('12-34-56'.split(/-/)) // [12, 34, 56]
+		
+		
+		str.replace(reg, str|func) - Швейцарский нож для работы со строками, поиска и замены любого уровня сложности
+		alert('12-34-56'.replace("-", ":")) // 12:34-56 При вызове со строкой замены replace всегда заменяет только первое совпадение
+		Чтобы  заменить  все  совпадения,  нужно  использовать  для  поиска  не  строку  "-",  а регулярное выражение /-/g, причём обязательно с флагом g:
+		alert( '12-34-56'.replace( /-/g, ":" ) )  // 12:34:56
+		$$  Вставляет "$".
+		$&  Вставляет всё найденное совпадение.
+		$`  Вставляет часть строки до совпадения.
+		$'  Вставляет часть строки после совпадения. 
+		$*n*  где n -- цифра или двузначное число, обозначает n-ю по счёту скобку, если считать слева-направо.
+		...
+		var str = "Василий Пупкин";
+		alert(str.replace(/(Василий) (Пупкин)/, '$2, $1')) // Пупкин, Василий 
+		...
+		Ещё пример, с использованием $&: 
+		var str = "Василий Пупкин";
+		alert(str.replace(/Василий Пупкин/, 'Великий $&!')) // Великий Василий Пупкин!
+		...
+		Для ситуаций, которые требуют максимально «умной» замены, в качестве второго аргумента предусмотрена функция.
+		var i = 0; 
+		// заменить каждое вхождение "ой" на результат вызова функции
+		alert("ОЙ-Ой-ой".replace(/ой/gi, function() {  return ++i;}));
+		// 1-2-3
+		В примере выше функция просто возвращала числа по очереди, но обычно она основывается на поисковых данных. 
+			Эта функция получает следующие аргументы: 
+			1.  str – найденное совпадение, 
+			2.  p1, p2, ..., pn – содержимое скобок (если есть), 
+			3.  offset – позиция, на которой найдено совпадение, 
+			4.  s – исходная строка.
+		...
+		replacer(str, offset, s) - Если скобок в регулярном выражении нет, то у функции всегда будет ровно 3 аргумента
+		// вывести и заменить все совпадения 
+		function replacer(str, offset, s)  
+			{ alert( "Найдено: " + str + " на позиции: " + offset + " в строке: " + s ); 
+			return str.toLowerCase(); 
+			} 
+		var result = "ОЙ-Ой-ой".replace(/ой/gi, replacer); 
+		alert( 'Результат: ' + result ); // Результат: ой-ой-ой
+		С двумя скобочными выражениями – аргументов уже 5: 
+		function replacer(str, name, surname, offset, s)  
+		{ 
+		  return surname + ", " + name; 
+		} 
+		var str = "Василий Пупкин"; 
+		alert(str.replace(/(Василий) (Пупкин)/, replacer)) // Пупкин, Василий
+		
+		
+		
+		regexp.test(str) - проверяет,  есть  ли  хоть  одно  совпадение  в  строке  str.  Возвращает true/false.
+		...
+		var str = "Люблю регэкспы я, но странною любовью"; 
+		// эти две проверки идентичны 
+		alert( /лю/i.test(str) ) // true 
+		alert( str.search(/лю/i) != -1 ) // true
+		...
+		var str = "Ой, цветёт калина..."; 
+		alert( /javascript/i.test(str) ) // false 
+		alert( str.search(/javascript/i) != -1 ) // false
+		
+		
+		regexp.exec(str) - Метод regexp.exec дополняет их. Он позволяет искать и все совпадения и скобочные группы в них. 
+			search – ищет индекс 
+			match – если регэксп без флага g – ищет совпадение с подрезультатами в скобках 
+			match – если регэксп с флагом g – ищет все совпадения, но без скобочных групп. 
+		Если флага g нет, то regexp.exec(str) ищет и возвращает первое совпадение, является полным аналогом вызова str.match(reg)
+		Если флаг g есть, то вызов regexp.exec возвращает первое совпадение и запоминает его позицию в свойстве regexp.lastIndex. Последующий поиск он начнёт уже с этой позиции. Если совпадений не найдено, то сбрасывает regexp.lastIndex в ноль. 
+	
+		
+		
+		
+
+
+		
+
+		
+		
+
+
+
+
+
+
+
+
+
+			
+			
+
+
 		
 		</pre>
 	</details>
