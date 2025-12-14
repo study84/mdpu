@@ -6,6 +6,14 @@
     <title>513-і, Золотухін Андрій</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
+	
+	<style>
+		body {
+			background-color: #555555;
+			color: Tan;
+		}
+	</style>
+	
 </head>
 
 <body>
@@ -346,35 +354,561 @@
 			match – если регэксп без флага g – ищет совпадение с подрезультатами в скобках 
 			match – если регэксп с флагом g – ищет все совпадения, но без скобочных групп. 
 		Если флага g нет, то regexp.exec(str) ищет и возвращает первое совпадение, является полным аналогом вызова str.match(reg)
-		Если флаг g есть, то вызов regexp.exec возвращает первое совпадение и запоминает его позицию в свойстве regexp.lastIndex. Последующий поиск он начнёт уже с этой позиции. Если совпадений не найдено, то сбрасывает regexp.lastIndex в ноль. 
-	
-		
-		
-		
-
-
-		
-
-		
-		
-
-
-
-
-
-
-
-
-
-			
-			
-
-
-		
+		Если флаг g есть, то вызов regexp.exec возвращает первое совпадение и запоминает его позицию в свойстве regexp.lastIndex. Последующий поиск он начнёт уже с этой позиции. Если совпадений не найдено, то сбрасывает regexp.lastIndex в ноль.		
 		</pre>
 	</details>
 	<br>
 	
+	
+	<details>
+		<summary><b>Лекция ООП</b></summary>
+		<pre>
+		person = new Object ();
+		person = {}; // Порожні фігурні дужки
+		
+		Наповнюємо об'єкт властивостями
+		person.name = 'Вася';
+		person.age = 25;
+		peron['name'];
+		
+		------------------------------------------
+		
+		var user {
+			name: "Andrey",
+			age: 41
+		};
+		
+		--------------------------------
+		
+		let obj = {
+			0: "Тест" // те саме, що і "0": "Тест". якщо використовувати як ключ число 0, то воно перетвориться на рядок "0":
+		};
+
+		----------------------------------------
+		let user = {};
+		user.noSuchProperty === undefined; //Особливість об'єктів у тому, що можна отримати доступ до будь-якої якості. Навіть якщо властивості не існує – помилок не буде! При зверненні до властивості, якої немає, повертається undefined . Це дозволяє просто перевірити існування властивості – порівнянням його з undefined
+		
+		user.year = 1999;
+		"year" in user; // true
+		
+		-----------------------------------------------
+		var menu = {
+			width: 300,
+			height: 200,
+			title: "Menu"
+		};
+		for ( var key in menu)
+			document.write ( " Ключ : " + key + " значення : " + menu[key] + ” ) 
+		
+		-------------------------------------------------------------------
+		
+		var user = {
+		  name : "Вася"
+		};
+	
+		var admin = user; // Скопіювали посилання
+		
+		
+		-------------------------- Методи об'єктів
+		var user = {
+			name : 'Василь’,
+			// метод
+			sayHi : function () {
+			// властивості присвоюється
+			alert ( 'Привіт!' ); // Посилання на анонімну функцію
+			}
+		};
+
+		// Виклик
+		user.sayHi ();
+		
+		----------------
+		var user = {
+			name : 'Василь'
+		};
+ 
+		//Привласнили метод після створення об'єкта
+		user.sayHi = function () { 
+			alert ('Привіт!');
+		};
+ 
+		// Виклик методу:
+		user.sayHi();
+
+		-------------------------- Об'єкти-константи
+		const user = {
+			name: "John"
+		};
+
+		user.age = 25; // сам об'єкт міняти можна
+		alert( user.age ); // 25
+
+		user = {name: "Pete" }; // а ось посилання міняти не можна!!!!!!!!
+		
+		------------------------------------------------------------
+		
+		Object.assign ( dest , [src1, src2, src3 ...])
+		Аргументи dest і src1, ..., srcN (можливо стільки, скільки потрібно) є об'єктами.
+		
+		не робить глибоке клонування!
+		let user = {
+			name: "John",
+			sizes: {
+				height: 182,
+				width: 50
+			}
+		};
+		
+		let clone = Object.assign ({}, user);
+		user і clone звертаються до одного sizes
+
+		------------------------------------------------------------
+		
+		Object.defineProperty ( obj, propertyName, descriptor ) // Створення нового властивості
+		Object.getOwnPropertyDescriptor ( obj, propertyName ); // Отримання дескриптора властивості
+		-----------------------
+		
+		Дескриптори властивостей- аксесорів відрізняються від «звичайних» властивостей-даних.
+		Властивості -аксесори не мають value і writable , але натомість пропонують функції get і set .
+		Тобто , дескриптор аксесору може мати:
+		set — функція, яка приймає один параметр — значення, яке задається під час присвоєння значення властивості. Використовується для налаштування значення або виконання певних дій під час присвоєння значення.
+		get — функція без параметрів, яка викликається під час доступу до властивості. Використовується для отримання значення, що обчислюється на основі іншої логіки.
+		value — значення, яке зберігається в властивості.
+		writable — визначає, чи можна змінювати значення цієї властивості. Якщо writable: true, значення властивості можна змінити, якщо writable: false, властивість буде лише для читання.
+		enumerable — визначає, чи буде властивість відображатися в циклі for...in або методах типу Object.keys().
+		configurable — визначає, чи можна змінювати характеристики властивості або видалити її. Якщо configurable: false, то змінити дескриптор або видалити властивість буде неможливо.
+		
+		const person = {};
+
+		Object.defineProperty(person, 'name', {
+			get() {
+				return this._name;
+			},
+			set(value) {
+				this._name = value.trim(); // автоматично обрізаємо пробіли
+			},
+			enumerable: true,
+			configurable: true
+		});
+
+		person.name = '   John Doe   ';
+		console.log(person.name); // "John Doe"
+		
+		---------------
+		
+		let user = {
+			name: "John",
+			surname: "Smith",
+			get fullName () {
+				return `${this.name} ${ this.surname }`;
+			},
+			set fullName (value) {
+				let tmp = value.split (' ', 2);
+				this.name = tmp [0];
+				this.surname = tmp [1];
+				//[this.name, this.surname ] = value.split (" "); // або 
+			}
+		};
+
+		alert( user.fullName ); // John Smith
+		
+		user.fullName = "Ivan Petrov ";
+		alert(user.name + "-" + user.surname ); // Ivan - Petrov
+		---------
+		Властивості об'єкта може бути або властивістю- аксесором (з методами get / set ), або властивістю-даним (зі значенням value ).
+		При спробі вказати і get , і value в одному дескрипторі буде помилка
+		------
+		
+		let user = {};
+		Object.defineProperty (user, "name", {
+			value: "John",
+			// для нового властивості необхідно явно вказувати всі прапори, котрим значення true
+			writeble : false,
+			enumerable: true,
+			configurable: true
+		});
+
+		alert(user.name); // John
+		user.name = "Pete"; // Помилка т.к. Writeble = false
+
+
+
+
+		
+		
+		
+		</pre>
+		
+		<script>
+			let person = new Object();
+			person.name = 'Andrey';
+			person.age = 41;
+			
+			console.log(person);
+			
+			person.age = 42;
+			person[0] = 0;
+			console.log(person, person['name'],);
+			//------------------------------------------
+			
+			var user = {				
+				name: "Andrey",
+				age: 41
+			};
+			
+			user.obj = user instanceof Object;
+			user.date = new Date();
+			
+			console.log(user);
+			
+			
+			var users = [
+				{ name: " Вася ", age: 25 },
+				{ name: " Петя ", age: 22 },
+				{ name : "Маша", age : 19 }
+			];
+			
+			for (let user of users) {
+				console.log(user)
+			}
+			
+			
+			function makeUser (name, age) {
+				return {
+					type: 'function',
+					//name: name,
+					name, // те саме, що й name: name
+					age: age
+				};
+			}
+			let fuser = makeUser("John", 30);
+			console.log(fuser); // John
+				
+			// ----------------------------------
+			var user = {
+				name : "Вася"
+			};
+			
+			var admin = user; // Создание ссылки
+			console.log(user, admin);
+			
+			user.name = 'Коля';
+			console.log(user, admin);
+
+			//----------------------------------
+			
+			var user = {
+				name: 'Andrey',
+				year: 1984
+			}
+			
+			var user_clone = {};
+			for ( var key in user) {
+				user_clone[key] = user[key];
+			}
+			console.log(user, user_clone);
+			
+			var user_clone2 = {... user};
+			user_clone2['name'] = 'AZ'
+			
+			var user_clone3 = Object.assign({}, user_clone2);
+			user_clone3.year += 1000;
+			
+			console.log(user, user_clone2, user_clone3);
+			
+			//-------------------------------------------
+			
+			var user = {
+				name : 'Василь',
+				// метод
+				sayHi : function () {
+				// властивості присвоюється
+				console.log( 'Посилання на анонімну функцію' ); // Посилання на анонімну функцію
+				}
+			};
+
+			// Виклик
+			user.sayHi();			
+			//-------------
+			var user = {
+			  name : 'Василь'
+			};
+			 
+			//Привласнили метод після створення об'єкта
+			user.sayHi = function() { 
+				console.log('Привласнили метод після створення об\'єкта');
+			};
+			 
+			// Виклик методу:
+			user.sayHi();
+			//-------------------------------------------
+			
+			var user = {
+				name: 'User',
+				func: function() {
+					console.log(`Hello ${this.name}`)
+				}
+			};
+			
+			user.func();
+			
+			
+			///-------------------------------------------
+			
+			const person2 = {};
+
+			Object.defineProperty(person2, 'name', {
+				value: 'John Doe',
+				enumerable: true,   // властивість буде перераховуватися
+				configurable: false  // можна змінювати дескриптор властивості
+			});
+			console.log('person2', Object.keys(person2)); // ['name']
+
+			// Змінимо enumerable
+			Object.defineProperty(person2, 'name', {
+				enumerable: true
+			});
+			console.log('person2', Object.keys(person2)); // []
+
+		
+		</script>		
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>Функції та області видимості. this в методах. Об'єкти LexicalEnvironment. Порядок доступу до змінних. Замикання</b></summary>
+		
+		<pre>
+			var user = {
+				name: 'Василь',
+				// метод
+				sayHi: function() { // властивості присвоюється
+					alert( 'Привіт!'); 
+				} // Посилання на анонімну функцію
+			};
+			
+			Це посилання, тому можна присвоювати, замінювати та видаляти
+			
+			//Привласнили метод після створення об'єкта
+			user.sayHi = function() {
+				alert('Привіт!');
+			};
+			
+			user.sayHi = null;
+			user.sayHi(); // Помилка
+			
+			-------------------------------------------
+			
+			Доступ до об'єкту через this
+			var user = { name: ' Василь',
+				sayHi: function() {
+					alert(this.name);
+				}
+			};
+			==============================================================================================
+			<h3>Значенням this є об'єкт перед «точкою», у якого викликаний метод</h3>
+			Абсолютно неважливо, оголошено її в об'єкті або окремо від нього. Значення this називається контекстом виклику і буде визначено у момент виклику функції.
+			Якщо функція використовує this - Це передбачає роботу з об'єктом. Але і прямий виклик func() технічно можливе.
+			
+			При цьому this отримує значення window або глобального об'єкта:
+			function func() {
+				alert(this);
+			}
+
+			func();  // виведе [ object Window] або [ object global]
+			
+			А в режимі  use strict замість глобального об'єкту this буде undefined
+			==============================================================================================
+			
+			var room = {
+				number: 777,
+				valueOf: function() {
+					return this.number;    
+				},
+				toString: function() {
+					return this.number;
+				}
+			};
+
+			alert(+room);
+			
+			то здесь происходит
+			room — это объект, у которого есть:
+				свойство number со значением 777
+				методы valueOf() и toString()
+			Оператор + перед объектом (+room) — это унарный плюс.
+				Он пытается преобразовать значение к числу.
+			При числовом преобразовании объекта JavaScript действует так:
+				сначала вызывает метод valueOf()
+				если он возвращает примитив (число, строку и т.п.) — использует его
+				если нет — вызывает toString()
+
+			Глобальними називають змінні та функції, які не знаходяться всередині якоїсь функції.
+			У JavaScript усі глобальні змінні та функції є властивостями спеціального об'єкта, який називається « глобальний об'єкт» (global object).
+			У браузері цей об'єкт явно доступний під назвою window.
+			================================================================================
+			
+
+			<h3>Лексичне оточення</h3>
+			<b></u>LexicalEnvironment</u></b> - Усі змінні всередині функції – це властивості спеціального внутрішнього об'єкта LexicalEnvironment, що створюється під час її запуску.
+			При запуску функція створює об'єкт LexicalEnvironment, записує туди аргументи, функції та змінні.
+			На відміну від window, об'єкт LexicalEnvironment є внутрішнім, він прихований від прямого доступу
+			================================================================================
+			
+			Вкладені функції
+			
+			function A() {
+				var a = 1;
+				B();
+			  
+				function B() {
+					var b = 2;
+					C();
+			 
+					function C() {
+						var c = 3;
+						alert(' ' + gl + ' ' + a + ' ' + b + ' ' + c);
+					}
+				}   
+			}
+
+			var gl = 0;
+			A();
+			
+			В JavaScript используется лексическая область видимости — вложенные функции видят переменные внешних функций, но не наоборот.
+			Почему это работает: Потому что функция C имеет доступ ко всем внешним областям видимости: C → B → A → global
+			
+			Лексичні оточення вистоюються в список (ланцюжок):
+			Інтерпретатор при доступі до змінної спочатку намагається знайти змінну в поточному LexicalEnvironment , а потім, якщо її немає - шукає в батьківському оточенні
+			Пошук повторюється доки змінна не знайдена чи ні батьківського оточення
+			При створенні функція отримує приховану властивість <b><u>Scope</b></u>, яка посилається на лексичне оточення, в якому вона була створена.
+			================================================================================
+			
+			Фабрична функція
+			
+			function makeCounter() {
+				var currentCount = 1;
+
+				return function() { // (**)
+					return currentCount++;
+				};
+			}
+			
+			var counter = makeCounter();
+
+			counter(); // 1
+			counter(); // 2
+			counter(); // 3
+
+			================================================================================
+			function f() {
+				//будь-яке тіло функції
+			}
+			f.test = 5;
+			alert(f.test);
+			
+			Відмінності властивостей від параметрів та локальних змінних
+			- Змінні доступні лише усередині функції, створюються у процесі виконання.
+			- C властивість функції – доступна звідусіль і завжди. Це використання функції «як об'єкта».
+			- Якщо хочеться прив'язати значення до функції, можна скористатися ним замість зовнішніх (статичних) змінних.
+
+			================================================================================
+			Лічильник через властивість ф-ії
+			
+			function makeCounter() {
+			  function counter() {
+				return counter.currentCount++;
+			  };
+			  counter.currentCount = 1;
+			  return counter;
+			}
+			---------------------------------
+			
+			function makeCounter() {
+			  var currentCount = 1;
+
+			  // Возвращаемая функция
+			  function counter() {
+				return currentCount++;
+			  }
+
+			  // метод установки значения
+			  counter.set = function(value) {
+				currentCount = value;
+			  };
+
+			  // метод сброса
+			  counter.reset = function() {
+				currentCount = 1;
+			  };
+
+			  return counter;
+			}
+
+			
+			
+
+
+
+
+
+
+		
+		</pre>
+		
+		<script>
+			function makeCounter() {
+				var currentCount = 1;
+
+				return function() { // (**)
+					return currentCount++;
+				};
+			}
+			
+			var counter = makeCounter();
+
+			for (let i = 0; i < 3; i++) {
+				console.log('counter 1: ', i, counter());
+			}
+			
+			var counter2 = makeCounter();
+			for (let i = 0; i < 3; i++) {
+				console.log('counter 2: ', i, counter2());
+			}
+			
+			var counter3 = makeCounter();
+			counter3.currentCount = 10;
+			console.log('counter3=', counter3.currentCount);
+			console.log('counter 3: ', counter3());
+			//---------------
+			
+			function makeCounter2() {
+				let currentCount = 1;
+
+				function counter() {
+					return currentCount++;
+				}
+
+				counter.set = function(value) {
+					currentCount = value;
+				};
+
+			return counter;
+		}
+
+		var counter4 = makeCounter2();
+		counter4.set(10);
+		for (let i = 0; i < 3; i++) {
+				console.log('counter 4: ', i, counter4());
+		}
+			
+			
+		
+		</script>
+		
+		
+	</details>
 	
 </body>
 </html>

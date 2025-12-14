@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>513-і, Золотухін Андрій</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/date-fns@2.28.0/dist/date-fns.min.js"></script>
+	
+	<style>
+		h1, hr, p {
+			margin: 0;
+		}
+		
+		table {
+            width: 100%;
+            border-collapse: collapse;			
+        }
+		th {
+            background-color: DarkGray;
+            font-weight: bold;
+        }		
+        th, td {
+            border: 1px solid DimGray;
+            padding: 4px 8px;            
+        }
+		
+		ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+		
+	
+		#myCanvas {
+			background: white;
+			border: 2px solid black;
+			--width: 100%;
+			--height: 100%; /* можно оставить фиксированную высоту или также сделать ее 100% */
+			border: 1px solid black; /* для видимости границ */
+		}
+	</style>
+</head>
+
+<body>
+    <h1>513-і, Золотухін Андрій<br>Програмування та підтримка веб-застосувань (JavaScript) (3к_5с)<br>Лабораторна робота 8. Найпростіші об'єкти.<br>Варіант 8.</h1>
+	<hr>	
+	<div  style="margin: 10px 0;"><b>Написати найпростіший об'єкт, який виконує задані дії. На додаток реалізувати методи, які відображають та стирають фігуру.</b></div >
+    <table>
+		<thead>
+            <tr>
+                <th>Поля</th>
+                <th>Дії</th>
+                <th>Обчислити</th>
+				<th>Рівні складності</th>
+            </tr>
+        </thead>
+		<tbody>
+            <tr>
+                <td>
+					<ul>
+						<li>X, Y – координати центру</li>
+						<li>R1, R2 – радіуси кутів квадрата</li>
+						<li>Колір(и)</li>
+					</ul>
+				</td>
+                <td>
+					<ul>
+						<li>Перемістити до нових координат</li>
+						<li>Перемістити на дельта X,Y</li>
+						<li>Масштабувати змінити R1 та R2</li>
+					</ul>
+				</td>
+                <td>
+					<ul>
+						<li>Координати всіх кутів</li>
+						<li>Периметр</li>
+						<li>Площа</li>
+						<li>Перевірити чи знаходиться точка всередині</li>
+					</ul>
+				</td>					
+				<td>
+					<ol>
+						<li>Створити найпростіший об'єкт відповідно до варіанта, виведення на екран даних проводиться в текстовому вигляді (тобто при відображенні виводиться напис<br><u>«Намальовано (x1 , y1), (x2- y2) і т.д.», де XK, YK -координати вершин)</u>. Зробити сторінку для 
+							тестування роботи об'єкта, сторінка за бажанням користувача викликає всі методи і показує поля у відповідь натискання кнопок</li>
+						<li>Виконати завдання першого рівня, але додати метод відображення у графічному вигляді на &ltCANVAS&gt</li>
+					</ol>
+				</td>
+            </tr>
+		<tbody>
+	</table>
+	<br>
+	<table>
+		<thead>
+			<tr>
+				<th>CANVAS</th>
+				<th>Список об'єктів</th>
+				<th>Властивості</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+            <tr>
+                <td>
+					<button type="submit" id="create" style="background-color: SpringGreen; color: Green;">Create</button>
+					<br>
+					<canvas id="myCanvas" width=1200 height=500></canvas>
+				</td>
+					<td>LIST</td>
+                <td>
+					<div>
+						<label for="created">Створено: </label>
+						<span id="created"></span>
+					</div>
+					<div>
+						<label for="index">Індекс об'єкту в масиві: </label>						
+						<span id="index"></span>
+					</div>
+					<div>
+						<label for="name">Ім'я: </label>
+						<input type="text" id="name" style="width: 85%">
+					</div>
+					<br>
+					<div>
+						<label for="x">X: </label>
+						<input type="number" id="x" style="width: 55px">
+						<label for="y">Y: </label>
+						<input type="number" id="y" style="width: 55px">
+						<button type="submit" id="move">Move to click</button>
+					</div>
+					<br>
+					<div>
+						<label for="radius">Радіус кола: </label>
+						<input type="number" id="radius" min="10" style="width: 55px">
+						<label for="color_circle">Колір кола: </label>
+						<input type="color" id="color_circle" value="#ff0000">
+					</div>
+					<br>					
+					<div>
+						<label for="square_percentage">Розмір квадрата: </label>
+						<input type="range" id="square_percentage" min="0" max="100" step="1" value="50">
+						<span id="square_percentage_value"></span>
+						<br>
+						<label for="R1">R1: </label>
+						<input type="range" id="R1" min="0" max="100" step="1" value="50">
+						<span id="R1_value"></span>
+						<br>
+						<label for="R2">R2: </label>
+						<input type="range" id="R2" min="0" max="100" step="1" value="50">
+						<span id="R2_value"></span>
+						<br>
+						<label for="color_square">Колір квадрата: </label>
+						<input type="color" id="color_square" value="#0000FF">
+						<br>
+						<label for="xy1">Кут 1: </label>
+						<span id="xy1"></span>
+						<br>
+						<label for="xy2">Кут 2: </label>
+						<span id="xy2"></span>
+						<br>
+						<label for="xy3">Кут 3: </label>
+						<span id="xy3"></span>
+						<br>
+						<label for="xy4">Кут 4: </label>
+						<span id="xy4"></span>						
+					</div>
+					<br>
+					<div>
+						<label for="Perimeter">Периметр об'єкта: </label>
+						<span id="Perimeter"></span>
+						<br>
+						<label for="Area">Площа об'єкта: </label>
+						<span id="Area"></span>
+					</div>
+					<br>
+					<button type="submit" id="delete" style="background-color: Red; color: Yellow;">DELETE</button>
+				</td>
+            </tr>
+		<tbody>
+	</table>	
+	<br>
+	
+	<script>
+		"use strict"
+		const canvas = document.getElementById("myCanvas");
+		//const ctx = canvas.getContext("2d");		
+		
+		function createObject() {
+			let obj = {
+				created: new Date(),
+				index: undefined, // array index
+				name: '',
+				x: undefined,
+				y: undefined,
+				radius: 50,
+				color_circle: undefined,
+				//-----				
+				xy1: undefined,
+				xy2: undefined,
+				xy3: undefined,
+				xy4: undefined,
+				square_percentage: 50,
+				r1: 50,
+				r2: 50,
+				color_square: undefined,
+				// Координати всіх кутів 
+				
+				create: function() {
+					this.canvas.beginPath();
+					this.canvas.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+					this.canvas.fillStyle = this.color_circle;
+					this.canvas.fill();
+					//----------------
+					let sq = Math.round(this.radius * 0.7 * this.square_percentage / 100); // розмір квадрата
+					
+					let top = this.y + sq;				
+					let left = this.x - sq;
+					let right = this.x + sq;
+					let botton = this.y - sq;
+					
+					let radius1 = (this.r1 / 100) * sq;  // r1 - процент округления (0 - 100)
+					let radius2 = (this.r2 / 100) * sq;  // r2 - процент округления (0 - 100)
+					this.canvas.beginPath(); // Малюємо квадрат з округленими кутами
+					this.canvas.moveTo(left, botton); // Левый верхний угол
+					
+					// Верхняя сторона
+					this.xy1 = [right - radius1, botton];
+					this.canvas.lineTo(right - radius1, botton);
+					this.canvas.arcTo(right, botton, right, botton + radius1, radius1); // Правый верхний угол
+
+					// Правая сторона
+					this.xy2 = [right, top - radius2];
+					this.canvas.lineTo(right, top - radius2);
+					this.canvas.arcTo(right, top, right - radius2, top, radius2); // Правый нижний угол
+
+					// Нижняя сторона
+					this.xy3 = [left, top];
+					this.canvas.lineTo(left, top);
+					//this.canvas.arcTo(left, top, left, top - this.r1, this.r1); // Левый нижний угол
+
+					// Левая сторона
+					this.xy4 = [left, botton];
+					this.canvas.lineTo(left, botton);
+					//this.canvas.arcTo(left, botton, left + this.r1, botton, this.r1); // Левый верхний угол
+
+					// Закрываем путь
+					this.canvas.closePath();
+
+					this.canvas.fillStyle = this.color_square;  // Колір заповнення для квадрата
+					this.canvas.fill();  // Заповнення квадрата
+				},
+				
+				
+				Perimeter: function() {
+					return (2 * Math.PI * this.radius).toFixed(2);
+				},
+				
+				Area: function() {
+					return undefined;
+				},
+				
+				Selection: function(x, y) {					
+					return (Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2) <= Math.pow(this.radius, 2));
+				}				
+				
+			};		
+			
+			Object.defineProperty(obj, 'type', {
+				value: 'square inscribed in a circle',
+				enumerable: true,
+				configurable: false
+			});
+			
+			Object.defineProperty(obj, 'canvas', {
+				value: canvas.getContext("2d"),
+				enumerable: true,
+				configurable: false
+			});
+						
+			console.log(obj);
+			
+			return obj;
+		}
+		
+		
+		function get_property(object) {
+			//document.getElementById('created').textContent = dateFns.format(object.created, 'yyyy-MM-dd HH:mm:ss'); //dateFns.format(new Date(), 'yyyy-MM-dd HH:mm:ss')
+			document.getElementById('index').textContent = object.index;
+			document.getElementById('name').value = object.name;
+			document.getElementById('x').value = object.x;
+			document.getElementById('y').value = object.y;
+			//-----
+			document.getElementById('radius').value = object.radius;
+			document.getElementById('color_circle').value = object.color_circle;
+			//-----
+			document.getElementById('square_percentage').value = object.square_percentage;
+			document.getElementById('square_percentage_value').textContent = object.square_percentage;					
+			document.getElementById('R1').value = object.r1;
+			document.getElementById('R1_value').textContent = object.r1;
+			document.getElementById('R2').value = object.r2;
+			document.getElementById('R2_value').textContent = object.r2;
+			document.getElementById('color_square').value = object.color_square;
+			document.getElementById('xy1').textContent = `X = ${object.xy1[0]} / Y = ${object.xy1[1]}`;
+			document.getElementById('xy2').textContent = `X = ${object.xy2[0]} / Y = ${object.xy2[1]}`;
+			document.getElementById('xy3').textContent = `X = ${object.xy3[0]} / Y = ${object.xy3[1]}`;
+			document.getElementById('xy4').textContent = `X = ${object.xy4[0]} / Y = ${object.xy4[1]}`;
+			//-----
+			document.getElementById('Perimeter').textContent = object.Perimeter();
+			document.getElementById('Area').textContent = object.Area();		
+		}
+		
+		
+		function redraw() {			
+			object.x = parseInt(document.getElementById('x').value, 10);
+			object.y = parseInt(document.getElementById('y').value, 10);
+			object.radius = parseInt(document.getElementById('radius').value, 10);
+			object.color_circle = document.getElementById('color_circle').value;
+			object.square_percentage = document.getElementById('square_percentage').value;
+			object.r1 = parseInt(document.getElementById('R1').value, 10);
+			object.r2 = parseInt(document.getElementById('R2').value, 10);
+			object.color_square = document.getElementById('color_square').value;
+			
+			canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+			objects.forEach(obj => {
+				obj.create();
+			});			
+		}
+		
+	</script>
+	
+	
+	<script>
+		var objects = [];
+		var object = undefined;
+		let button = null;
+		
+		
+		const create = document.getElementById('create');
+		create.addEventListener('click', function() {
+			button = 'create';
+			console.log('click button create', button, Date());
+		});
+		
+		
+		const move = document.getElementById('move');
+		move.addEventListener('click', function() {
+			button = 'move';
+			console.log('click button move', button, Date());
+		});
+		
+		
+		const myCanvas = document.getElementById('myCanvas');
+		myCanvas.addEventListener('click', function(event) {			
+			const rect = canvas.getBoundingClientRect();
+			//const x = event.clientX - rect.left;
+			//const y = event.clientY - rect.top;
+			console.log(`CANVAS > Button: ${button}, X: ${event.clientX - rect.left}, Y: ${event.clientY - rect.top}`);
+			if (button === 'create') {				
+				//const x = event.clientX - rect.left;
+				//const y = event.clientY - rect.top;
+				objects.push(createObject());
+				last = objects.length - 1;
+				console.log(objects, last);
+				objects[last].index = last;
+				objects[last].x = event.clientX - rect.left;
+				objects[last].y = event.clientY - rect.top;
+				objects[last].color_circle = document.getElementById('color_circle').value;
+				objects[last].color_square = document.getElementById('color_square').value;
+				objects[last].create();				
+				get_property(objects[last]);
+			}
+			else if (button === 'move' && object != null) {				
+				//object.x = event.clientX - rect.left;
+				//object.y = event.clientY - rect.top;
+				document.getElementById('x').value = event.clientX - rect.left;
+				document.getElementById('y').value = event.clientY - rect.top;				
+				redraw();
+			}
+			button = null;
+			//console.log('click button create', Date());
+		});
+		
+		
+		canvas.addEventListener('dblclick', function(event) {			
+			const rect = canvas.getBoundingClientRect();
+			const x = event.clientX - rect.left;
+			const y = event.clientY - rect.top;
+			for (let obj of objects) {
+				if(obj.Selection(x, y)) {
+					object = obj;
+					get_property(object);
+					break;
+				}
+			}			
+		});
+		
+		
+		document.getElementById("name").addEventListener("change", function() {
+			if (object != null) {
+				object.name = document.getElementById("name").value;
+				console.log(object);
+			}
+		});	
+		
+		
+		document.getElementById("x").addEventListener("change", redraw);
+		document.getElementById("y").addEventListener("change", redraw);
+		//--
+		document.getElementById("radius").addEventListener("change", redraw);
+		document.getElementById("color_circle").addEventListener("change", redraw);
+		//--		
+		document.getElementById("square_percentage").addEventListener("change", redraw);
+		document.getElementById("R1").addEventListener("change", redraw);
+		document.getElementById("R2").addEventListener("change", redraw);
+		document.getElementById("color_square").addEventListener("change", redraw);		
+		
+		
+		const delete_obj = document.getElementById('delete');
+		delete_obj.addEventListener('click', function() {			
+			if (object != null && confirm(`DELETE OBJECT index: ${object.index}, name: '${object.name}' ?`)) {				
+				console.log('DELETE', object);
+				objects.splice(object.index, 1);
+				canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+				/*objects.forEach(obj => {
+					obj.create();
+				});*/
+				for(let obj in objects) {
+					objects[obj].index = obj;
+					objects[obj].create();
+				}
+				//console.log('click button delete', Date(), object, result);
+			}			
+		});
+		
+		
+		
+		
+		/*
+		sc = createObject();
+		sc.x = 150;
+		sc.y = 150;
+		sc.create();
+		*/
+	</script>
+	
+	
+	<!--
+	<script>
+		// Устанавливаем параметры круга
+		var x = 150; // x-координата центра круга
+		var y = 150; // y-координата центра круга
+		var radius = 100; // Радиус круга
+		var startAngle = 0; // Начальный угол (в радианах)
+		var endAngle = Math.PI * 2; // Конечный угол (в радианах), 2*π — это полный круг
+
+		
+		// Рисуем круг
+		ctx.beginPath();
+		ctx.arc(x, y, radius, startAngle, endAngle);
+		ctx.fillStyle = "blue"; // Цвет заливки
+		ctx.fill(); // Заполняем круг		
+		//let test = new circle_square();
+			
+		
+		
+		function drawRoundedRightSquare(ctx, x, y, size, radius) {
+			const half = size / 2;
+			
+			const left = x - half;
+			const top = y - half;
+			const right = x + half;
+			const bottom = y + half;
+
+			ctx.beginPath();
+			
+			ctx.moveTo(left, top);                    // Левый верхний
+			ctx.lineTo(right - radius, top);         // Верхняя сторона
+
+			ctx.arcTo(right, top, right, top + radius, radius); // Правый верхний угол
+			ctx.lineTo(right, bottom - radius); // Правая сторона
+
+			ctx.arcTo(right, bottom, right - radius, bottom, radius); // Правый нижний угол
+
+			ctx.lineTo(left, bottom);                // Нижняя сторона
+			
+			ctx.closePath();
+			ctx.fillStyle = "Red";
+			ctx.fill(); // Заполняем круг
+			ctx.stroke();
+		}		
+		drawRoundedRightSquare(ctx, x, y, radius, 50); // 0 - 50		
+	</script>
+	-->
+	
+	
+</body>
+</html>
