@@ -256,7 +256,10 @@
 				},
 				
 				Area: function() {
-					return undefined;
+					//return (Math.PI * Math.pow(this.radius, 2)) - (2 * Math.pow((this.r1 + this.r2) / 2 , 2) + 0.5 * Math.PI * Math.pow((this.r1 + this.r2) / 2, 2));
+					const r = (this.r1 + this.r2) / 2;
+					return Math.abs(Math.PI * this.radius ** 2 - (2 * r ** 2 + 0.5 * Math.PI * r ** 2));
+
 				},
 				
 				Selection: function(x, y) {					
