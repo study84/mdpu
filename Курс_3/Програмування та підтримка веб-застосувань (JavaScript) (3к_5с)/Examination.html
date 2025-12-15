@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>513-і, Золотухін Андрій: Іспит</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.4.3/decimal.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/date-fns@2.28.0/dist/date-fns.min.js"></script>
+	
+	<style>
+		a {
+            color: black;
+            text-decoration: none;
+        }
+		table {
+			border-collapse: collapse;
+		}
+
+		table, th, td {
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+
+<body>
+    <h1>513-і, Золотухін Андрій<br>Програмування та підтримка веб-застосувань (JavaScript) (3к_5с)<br>Іспит<br>Варіант 15.</h1>
+	<hr>	
+	<div  style="margin: 10px 0;"><b>При наведенні на гіперпосилання документа, якщо його URL містить посилання з протоколом http, то зробити колір посилання червоним, інакше зеленим.</b></div >
+	<br>
+	
+	<details>
+		<summary><b>Дерево DOM. Додавання і видалення вузлів. Розміри і прокрутка елементів </b></summary>
+		<pre>
+			Дерево DOM. Додавання і видалення вузлів. Розміри і прокрутка елементів 
+			Дерево DOM (Document Object Model)
+			DOM — це об'єктна модель, яка представляє структуру HTML-документа у вигляді дерева. 
+			Властивості вузлів (node properties): 
+			1. Тип вузла (nodeType): Як правило, розробники працюють із двома основними типами: Елемент (ELEMENT_NODE), який має значення 1, та Текстовий вузол (TEXT_NODE), що має значення 3. 
+			2. Назва (Тег): Властивості nodeName та tagName містять назву тега вузла елемента, причому назва HTML-тегу завжди знаходиться у верхньому регістрі. 
+			3. Вміст: 
+				◦ innerHTML — вміст елемента у вигляді HTML. 
+				◦ outerHTML — містить повний HTML елемента, але змінити його неможливо. 
+				◦ textContent — містить лише текст усередині елемента, виключаючи всі <теги>. 
+				◦ innerText — нестандартна властивість, аналогічна textContent. 
+		4. Інші властивості: Вузли DOM також мають властивості, що залежать від їхнього типу, наприклад, value (для INPUT, SELECT, TEXTAREA), id або href (для посилань). 
+			Навігація та пошук елементів: 
+			Для доступу до елементів використовуються спеціалізовані методи пошуку: 
+				• document.getElementById("ідентифікатор"): Це більш правильна і загальноприйнята практика доступу до елемента. Також елемент стає доступним просто за його id. 
+				• elem.getElementsByTagName(tag): Шукає всі елементи із зазначеним тегом всередині елемента elem. На відміну від getElementById, цей метод може шукати всередині будь-якого елемента. Якщо передати зірочку *, можна отримати всіх нащадків. 
+				• document.getElementsByName(name): Дозволяє отримати всі елементи з певним атрибутом name. 
+				• elem.getElementsByClassName(className): Повертає колекцію елементів із зазначеним класом, навіть якщо елемент має кілька класів. 
+				• elem.querySelectorAll(css): Повертає всі елементи всередині elem, які відповідають вказаному CSS-селектору. 
+				• elem.querySelector(css): Повертає лише перший елемент, який відповідає CSS-селектору. 
+			Додавання і видалення вузлів 
+			Для створення та маніпуляції структурою DOM використовуються такі методи: 
+				1. Створення вузлів: 
+					• document.createElement(tag): Створює новий елемент із вказаним тегом. 
+					• document.createTextNode(text): Створює новий текстовий вузол із заданим текстом. 
+					• elem.cloneNode(true): Створює "глибоку" копію елемента разом із усіма атрибутами та дочірніми елементами. Якщо викликати з аргументом false, копія буде без дочірніх елементів. 
+				2. Додавання вузлів: 
+					• parentElem.appendChild(elem): Додає елемент elem до кінця дочірніх елементів parentElem. 
+					• parentElem.insertBefore(elem, nextSibling): Вставляє елемент elem у колекцію дочірніх елементів parentElem перед елементом nextSibling. 
+				3. Видалення та заміна вузлів: 
+					• parentElem.removeChild(elem): Видаляє елемент elem зі списку дочірніх елементів parentElem. 
+					• parentElem.replaceChild(newElem, elem): Видаляє елемент elem серед дочірніх елементів parentElem і вставляє на його місце newElem. 
+				Розміри і прокрутка елементів (Маніпуляція стилями та класами) 
+				У представлених джерелах детально описано, як маніпулювати стилями та класами, які безпосередньо впливають на розміри та відображення елементів, проте відсутні властивості, що стосуються прямого отримання розмірів елементів (наприклад, offsetWidth) або керування прокруткою (scrollTop). 
+		Робота зі стилями: 
+			1. elem.style: Властивість elem.style є об'єктом, який відповідає тому, що записано в атрибуті style. Наприклад, встановлення elem.style.width="100px" працює так само, як наявність у атрибуті style рядка width:100px. 
+			2. camelCase: Для властивостей, що складаються з кількох слів (наприклад, background-color або z-index), використовується стиль camelCase (elem.style.backgroundColor, elem.style.zIndex). 
+			3. Перезапис стилів: Можна повністю перезаписати стиль елемента, використовуючи style.cssText. 
+			4. Вибір стилізації: Класи завжди є найкращим варіантом у порівнянні з прямим маніпулюванням style. Властивістю style слід маніпулювати лише у випадку, якщо класи не можуть впоратися із завданням (наприклад, для складних розрахунків координат). 
+		Робота з класами: 
+		Для керування класами елемента використовується: 
+			• className: Ця властивість відповідає атрибуту class. 
+			• classList: Це об'єкт з методами для зручної маніпуляції класами: 
+			◦ elem.classList.add("class") — додати клас. 
+			◦ elem.classList.remove("class") — видалити клас. 
+			◦ elem.classList.toggle("class") — додати клас, якщо його немає, інакше видалити. 
+			◦ elem.classList.contains("class") — перевіряє наявність класу, повертаючи true або false. 
+			• classList є перебірним, тому всі класи можна перерахувати за допомогою циклу for..of. 
+	</pre>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>При наведенні на гіперпосилання документа, <u style="background-color: yellow;">якщо його URL містить посилання з протоколом http</u>, то зробити колір посилання <u style='color: red;'>червоним</u>, інакше <u style="color: LimeGreen;">зеленим</u></b></summary>		
+		<p>
+			<a href="http://example.com">HTTP посилання</a><br>
+			<a href="https://example.com">HTTPS посилання</a><br>
+			<a href="ftp://example.com">FTP посилання</a>
+		</p>
+
+		<script>
+			"use strict"
+			const links = document.querySelectorAll('a');
+			const httpRegex = /^http:\/\//i;
+
+			links.forEach(link => {
+				link.addEventListener('mouseenter', () => {
+					if (httpRegex.test(link.href)) {
+						link.style.color = 'red';
+					} else {
+						link.style.color = 'LimeGreen';
+					}
+				});
+
+				link.addEventListener('mouseleave', () => {
+					link.style.color = 'black';
+				});
+			});
+		</script>
+	</details>
+	<br>
+	
+	
+	<details>
+		<summary><b>ТЕСТ</b></summary>		
+		<table>
+			<thead>
+			<tr>
+				<th>Питання</th>
+				<th>Відповідь</th>				
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Яка властивість дозволяє визначити чи є вузол DOM тегом або текстом? </td>
+					<td>a. nodeType</td>
+				</tr>
+				<tr>
+					<td>Який із символів в регулярних виразах означає кінець рядка? </td>
+					<td>b. $</td>
+				</tr>
+				<tr>
+					<td>Який метод створює новий текстовий вузол DOM? </td>
+					<td>b. document.createTextNode(text)</td>
+				</tr>
+				<tr>
+					<td>Який метод видаляє останній елемент з масиву? </td>
+					<td>pop()</td>
+				</tr>
+				<tr>
+					<td>Чи може функція мати властивості?</td>
+					<td>Так, функція теж особливий вид об'єкта</td>
+				</tr>
+				<tr>
+					<td>Яка з властивостей елемента DOM вказує на першого з нащадків?</td>
+					<td>d. firstChild</td>
+				</tr>
+				<tr>
+					<td>Який метод є у будь-якого типу?</td>
+					<td>toString();</td>
+				</tr>
+				<tr>
+					<td>Яке ключове слово означає пусту перемінну без значення?</td>
+					<td>undefined</td>
+				</tr>
+				<tr>
+					<td>Який метод повертає підрядок за номером першого і останнього символів?</td>
+					<td>substring()</td>
+				</tr>
+				<tr>
+					<td>Яка подія виникає, коли миша залишає зображення елемента?</td>
+					<td>f. mouseout</td>
+				</tr>
+			</tbody>
+		</table>
+	</details>
+	
+	
+</body>
+</html>
